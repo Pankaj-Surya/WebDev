@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>poc</title>
+    <style>
+        .text{
+            padding: 0px 253px;
+            border: 1px solid;
+        }
+        input{
+            margin: 24px 0px;
+        }
+        button{
+            padding: 0px 65px;
+        }
+        .em{
+            font-size: 16px;
+        }
+        .vh-vw{
+            width: 70vw;
+            height: 100vh;
+            background-color: black;
+        }
+        .child{
+            height: 50%;
+            background-color: blueviolet;
+            width: 40%;
+        }
+        .display{
+
+        }
+        .display span{
+            border: 1px solid brown;
+        }
+    </style>
+</head>
+<body>
+     <!-- Box Model -->
+     <!-- Margin = space between elements -->
+     <!-- Padding = space between border -->
+    <div class="text">
+        <input type="text">
+        <br>
+       <button>Button</button>
+       <input type="text">
+       <br>
+      <button>Button</button>
+    </div>
+
+
+    <!-- CSS Units -->
+    <!-- Two types of unit -->
+    <!-- 1. Absolute = content(font) will take size irrespective of screen width
+         2. Relative = 
+         
+        In html tag ==> by default font size 16px  
+        -->
+
+    <!-- 
+        1.1 px
+        2.1 rem => multiple of font size of (rrot element)html tag
+        2.2 em  => multiple of font size of parent tag
+        2.3 vh  => screen size Height (Ex. Images) 
+        2.4 vw  => screen size width (resize screen)
+        2.5 % 
+        
+        Note: vh vw % ==> multiple of parent elemnt
+     -->
+     <hr>
+     <div class="px" style="font-size: 32px;">px</div>
+     <div class="rem" style="font-size: 2rem;">rem</div>
+      <div class="em">
+       <p>I am para</p>
+      </div>
+      <div class="vh-vw">
+          <div class="child"></div>
+          <!-- <input type="text"> -->
+      </div>
+
+      <!-- Display -->
+      <!-- Types
+           1. inline =>element take space that require. ex span
+           Note: inline , we cant set height and width
+           2. block  => fully occpy width so next content on next line  ex h1, p
+           3. inline-block => inline feature with we can set height width  Ex button
+           4. flex -->
+
+           <div class="display">
+               <input id="ip" type="">
+                <button id="btn">Submit</button>
+                <span> I am Span</span>
+                <span>I am Spammm</span>
+            </div>
+</body>
+</html>

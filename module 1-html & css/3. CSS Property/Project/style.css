@@ -1,0 +1,62 @@
+*{
+    margin: 0.2 rem;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    /* margin: 0 auto; */
+ 
+}
+
+ul{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    font-size: x-large;
+}
+
+nav{
+
+    /* width: 60%; */
+    width: 50vw;
+    margin-top: 5px;
+}
+
+.bigImg{
+  width: 95vw; 
+}
+
+.container{
+    display: flex;
+    margin-top: 4rem;
+}
+
+.container>div{
+text-align: center;
+padding: 2rem;
+}
+
+.container>div>p{
+    font-size: x-large;
+}
+
+footer{
+   height: 40px;
+   background-color: black;
+   color: aliceblue;
+   font-size: x-large;
+   text-align: center;
+margin: 2px;
+  
+}
+
+
+
+
+
+
+
+ 
+
