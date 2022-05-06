@@ -35,7 +35,7 @@ let path=require("path");
 
 // Create Dir
 // if folder exist it throw error so use if condition
-//fs.mkdirSync("humariDirectory");
+fs.mkdirSync("mkDir");
 // if(!fs.existsSync("humariDirectory"))
 // {
 // fs.mkdirSync("humariDirectory");
@@ -52,11 +52,10 @@ let path=require("path");
 // fs.rmdirSync("humariDirectory");
 
  // Copy Dir
- let sourcePath=path.join(__dirname,"file.txt");
+//  let sourcePath=path.join(__dirname,"file.txt");
 
- let destPath=path.join(__dirname,"module","file.txt");
- console.log(sourcePath);
- console.log(destPath);
- fs.copyFileSync(sourcePath,destPath);
+//  let destPath=path.join(__dirname,"module","file.txt");
+//  console.log(sourcePath);
+//  console.log(destPath);
+//  fs.copyFileSync(sourcePath,destPath);
 
-z

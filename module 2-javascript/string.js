@@ -32,3 +32,5 @@ console.log(str.charAt(3));
 //split
 let splitted=str.split("");
 console.log(splitted);
+
+

@@ -72,6 +72,7 @@ function moveFile(folderPath,pathOfFOlder,fileName)
 
 // for(let key in extensions)
 //  {
+    
 //     console.log(key);
 //      console.log(extensions[key]);
 //  } 
