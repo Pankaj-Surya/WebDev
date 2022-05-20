@@ -16,7 +16,7 @@ in case of browser :
 
 in case 
 
-Every code in js is located in bubble known as Execution context.
+Every code in js is located in bubble known as Execution context.like stack in other language.
 
 Q.when execution context created ?
   when function is called.
@@ -35,8 +35,8 @@ EC has phases
 EC -->       1. global obj 
              2. this
 Creation     3. code memory allocation
-                1.variable -->undefined
-                2.function -->Memory Alocated
+                 1.variable -->undefined(Default)
+                 2.function -->Memory Alocated(Default)
 
               
 
