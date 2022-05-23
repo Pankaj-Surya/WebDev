@@ -52,3 +52,59 @@ Excction context is always is created when function is called
 
 when fun dosent have variable or function --> it will look outside function defination
 
+     Let Variable
+---------------------------
+ 1.var variable --> Reassign it , redeclare it
+ 2.let variable --> reassign but not redclare but in same block {}
+ throw error identifier has already been 
+
+// block is area inside the curly braces
+1.let is block scope 
+2.var is function scope
+
+ SCOPE , SCOPE CHAINING
+--------------------------------------
+1. let is block scope
+2. Hoisting(memory allocation) for let variable is done wheree block is encountered
+3. if no variable associated is not present in a block
+
+
+console.log(a);
+let a=10;
+ReferenceError: Cannot access 'a' beforenitialization --> undefined set was done --> tmporary dead zone
+
+// scope : area till which a given variable is available
+
+ 1.var --> function 
+ 2.let/ const --> block scope
+
+scope chain : when a variable isnt available inside the current scope then we will look outside the outer scope till u are not able to find that variable
+
+1.let and const
+
+{                   |     
+    {               |
+        {           |
+            {       |
+ 
+            }       |
+        }           
+    }               
+}    
+
+2.var
+
+fn(){
+    fn1(){
+        fn2(){
+           
+        }
+    }
+}
+
+
+
+
+
+
+

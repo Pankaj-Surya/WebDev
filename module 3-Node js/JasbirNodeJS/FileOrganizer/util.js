@@ -11,12 +11,12 @@ function returnFolderName(fileName) {
    //console.log(extname.slice(1));
    extname =extname.slice(1);
    for(let key in types){
-       let totaExt = types[key];
+       let totalExt = types[key];
       // console.log(totaExt); //array of ext [ ....]
       //console.log(key);
-      for(let i=0; i<totaExt.length;i++){
+      for(let i=0; i<totalExt.length;i++){
          // console.log(totaExt[i]); // all ext one by one
-         if(totaExt[i]==extname){
+         if(totalExt[i]==extname){
              console.log(key);
              return;
          }
@@ -36,3 +36,7 @@ returnFolderName("xyz.abc");   //-> others
             //         documents
             //         app
             //         other
+
+
+
+            
