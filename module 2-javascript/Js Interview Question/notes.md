@@ -73,7 +73,7 @@ console.log(a);
 let a=10;
 ReferenceError: Cannot access 'a' beforenitialization --> undefined set was done --> tmporary dead zone
 
-// scope : area till which a given variable is available
+** scope : area till which a given variable is available
 
  1.var --> function 
  2.let/ const --> block scope
@@ -103,8 +103,11 @@ fn(){
 }
 
 
-
-
-
+PROPERTIES OF VARIABLE
+----------------------------
+1. assingment
+2. function are also be trated as a varaible --> variable is first citizen in js
+3. pass to function as parameter 
+4. return variable from a function
 
 
