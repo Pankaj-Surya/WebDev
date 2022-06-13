@@ -39,6 +39,7 @@ function extractData(body) {
     // how to narrow;
     // using document and your selectors you find element in html page 
     console.log("reached for parsing");
+    getDataFromBowlingTables(newHtmlString);
 }
 function getDataFromBowlingTables(newHtmlString) {
     const JSDOM = jsdom.JSDOM;
