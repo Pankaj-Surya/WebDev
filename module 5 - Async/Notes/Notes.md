@@ -110,3 +110,23 @@ task
 -----------------------
 
 
+IV
+------
+
+1.what is webscrapping?
+2.why we build this project?
+3.what is callback?
+4.JsDom -->Alternative(cheeria)
+5.how you reach to jsdom?
+  while learning Nodejs we know only request but we get html content
+  so parse/manupulate that 
+**
+
+
+
+In NodeJs
+---
+single thread
+
+
+**undrestand whole code at functional level
