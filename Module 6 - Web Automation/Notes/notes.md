@@ -43,7 +43,9 @@ npm i puppeteer
 
 action --> keyboard , mouse , scroll
 
-18 july 2022 :  web automation on    
+
+---------------------------------------------------
+19 july 2022 :  web automation on  hackerRankLogin 
 -----------------------------------------------------
 
 Last class revised:
@@ -62,3 +64,14 @@ await --> keyword wait till state (rejected,fulfill)
 page change error prevent --> to wait for selector that is present in next page await tab.
 
 peter.sh --> for all argument
+
+--------------------------------------------------------------
+19 july 2022 :  web automation on  
+-----------------------------------------------------------
+Activity :
+1. go to pepcoding.com-->courses --> print all courses details in table form
+
+2.  choose a topic  -> ?? Java
+    select questions -> ??  Java Stdin and Stdout I
+    write the code ->  -> code read type   
+    submit the code  -> button click
