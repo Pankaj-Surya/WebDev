@@ -75,3 +75,16 @@ Activity :
     select questions -> ??  Java Stdin and Stdout I
     write the code ->  -> code read type   
     submit the code  -> button click
+
+24 july 2022 :  web automation copypaste  
+-----------------------------------------------------------
+1.Activity :
+          continue hackerrank ....
+          write the code ->  -> code read type   
+          submit the code  -> button click
+
+2.Project Description and IQ
+
+3.Test Discussion
+  
+  

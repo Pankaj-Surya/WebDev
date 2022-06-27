@@ -15,20 +15,33 @@ async function fn() {
     //new  tab open  
     const tab = await browserRepresentativeObj.newPage();
     // // to go google's home page 
-    await tab.goto("https://practice.geeksforgeeks.org/explore?page=1&sortBy=submissions");
+    await tab.goto("https://practice.geeksforgeeks.org/explore?page=1&company[]=Amazon&sortBy=submissions");
       // // // page change error prevent  -> to wait for selector that is present on the second page  
       await tab.waitForSelector(".ui.checkbox", { visible: true });
       // // click 
-     
+      myTimeout = setTimeout(browserMeChalneWalafn, 5000);
+      let amazonName = await tab.evaluate(browserMeChalneWalafn); //call browserMeChalneWalafn()
+      console.log(amazonName);
+      // represent -> in good format 
+      
+      function browserMeChalneWalafn() {
+        // let companyArr = document.querySelectorAll(".ui.checked");
+        // let amazon = companyArr.length
+        // return amazon;
+      
+        let elemArr = document.querySelectorAll(".explore_problemContainerTxt__kyh8P");
+        //let count =elemArr.length;
+        return elemArr[0];
+
+      }
+      console.log("End");
      
       // 2. // no meaning 
       // document represent the whole html page 
-      let document = dom.window.document;
-      let companyArr = document.querySelectorAll(".ui.checked");
-      let amazon = companyArr.length
-      console.log(amazon);
+ 
       //await tab.click(".ui.checked", { delay: 200 });
  
 }
 
 fn();
+console.log("End 1");
