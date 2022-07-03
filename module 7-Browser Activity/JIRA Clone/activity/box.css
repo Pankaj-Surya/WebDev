@@ -1,0 +1,152 @@
+body {
+    margin: 0px;
+}
+
+* {
+    box-sizing: border-box;
+    /* question*/
+}
+
+.header {
+    height: 5rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+.main{
+    height:70vh;
+}
+
+.color_pallete {
+    height: 65%;
+    width: 12rem;
+    background-color: #393c3f;
+    margin-right: 5rem;
+    margin-left: 2rem;
+    display: flex;
+    border-radius: 7px;
+}
+
+.color_boxes {
+    width: 25%;
+    height: 100%;
+    /* border: 1px solid red; */
+    /* perefectly center a div inside a div */
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+/* generic styling  */
+.color {
+    height: 50%;
+    width: 50%;
+    border-radius: 4px;
+}
+
+.pink {
+    background-color: lightpink;
+}
+
+.blue {
+    background-color: lightblue;
+}
+
+.green {
+    background-color: lightgreen;
+}
+
+.black {
+    background-color: black;
+}
+
+/* options */
+.options {
+    height: 65%;
+    width: 7rem;
+    background-color: #393c3f;
+    display: flex;
+}
+.box {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.icon{
+    color:white;
+    font-size:2rem;
+}
+
+/* lock_unlock box */
+.lock_unlock_box{
+    height: 65% ;
+    width: 7rem;
+    background-color: #393c3f;
+    color: white;
+    display: flex;
+    margin-left: 2rem;
+}
+
+.boxx{
+    width: 50%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxx i{
+    font-size: 1.75rem;
+}
+
+/* .main{
+    min-height: 90vh;
+    background-color: rgb(241, 234, 234);
+    padding: 2rem;
+}
+
+.ticket{
+    height: 10rem;
+    width: 16rem;
+}
+
+.ticket_header{
+  height: 0.2rem;
+  background-color: #393c3f;
+
+} */
+
+
+.main {
+    min-height: 90vh;
+    background-color: rgb(241, 234, 234);
+    padding: 2rem;
+    display: flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+}
+
+.ticket {
+    height: 10rem;
+    width: 16rem;
+    border: 1px solid blueviolet;
+    /* margin-top: 10rem; */
+    /* margin-left: 10rem; */
+}
+
+.ticket_header {
+    height: 3%;
+    background-color: black;
+}
+
+.ticket_content {
+    height: 94%;
+}
+
+textarea{
+    width: 100%;
+    /* //height: 7rem; */
+    height: 8.46rem;
+}

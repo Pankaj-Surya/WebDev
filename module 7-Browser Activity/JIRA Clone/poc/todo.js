@@ -2,7 +2,7 @@
 //button
 let button=document.querySelector("button");
 
-//iput
+//input
 let input = document.querySelector("input");
 
 

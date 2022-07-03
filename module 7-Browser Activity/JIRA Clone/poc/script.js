@@ -63,3 +63,4 @@ pElem.style.backgroundColor="lightgreen";
 //**********delete****************** */
 
 ele.remove();
+
