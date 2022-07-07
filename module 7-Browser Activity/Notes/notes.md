@@ -167,6 +167,7 @@ properties of flexbox
 5.align-self : for individual item
 
 
+------------------
 
 
 
@@ -185,3 +186,147 @@ line-heigth: vertical distance between two line
 Task : when + is click new ticket window will created
      
 Task : change color header featur 
+
+
+
+01-07-2022 : JIRA Clone Project- Web browser activity
+-------------------------------------------------------------------------------------------------
+
+Task
+1.Filtering, locking
+2.delettaion
+3.color change
+4.creation
+
+
+
+How to toggled?
+
+
+Filter                    vs    Delete
+---------------------------------------------------
+hide the element           |     Delete the element
+                           
+option 1:
+visibility : hidden
+occupy its space remain hidden
+option 2:
+display : none
+not occupy its space remain hidden
+
+
+@filterTickets
+ 
+ 
+ 1.color click --> change color
+
+
+
+@Creation
+
+**********Position -Style*********
+
+Position : Relative
+          position of elememt relative to its original position
+          and does not allow to enter inside anoter element
+          it also occupy its original position
+Position : absolute
+           position an element w.r.t pages's top left corner
+           it leaves its original positin
+Position : fixed
+           stick to its position
+ 
+
+
+
+
+04-07-2022 : JIRA Clone Project- Web browser activity
+-------------------------------------------------------------------------------------------------
+
+when we lock--->add,delete ,edit,filter
+
+Ticket ---> 
+            1.Filter  ---->lock
+
+            2.create  | 
+            3.edit    | --->lock,unlock
+            4.delte   |
+
+
+*enableEdit()
+*disableEdit()
+
+Main\App Level-->changes on whole app
+----------------
+1.Filter
+2.lock
+3.unlock
+4.enable delete
+
+1.lock
+      1.1 islockedd = true
+      1.2 editing = disable
+     
+2.unlock
+       2.1 islockedd = false
+        2.1.1 C E D chane color 
+       2.2 editing = enable
+        2.3 show all = filter--> every ticket should be
+
+3.enable delete
+       3.1 depn upon -->islockd
+       3.2 toggle-->isdelete ->delete ticket
+
+4.filter
+        4.1 depn --> islock=true
+        4.2
+
+
+
+Ticket
+-------------
+1.create        |
+2.color change  |
+3.edit          |=====>unlock first
+4.delete        |
+
+1.create 
+       first islock=false
+       then create ticket
+
+After creating
+                             
+2.colorchange -->
+     header -->color change 
+     ticket -->delete
+
+--------------
+left : calc(100vw-30rem)/2
+
+
+Deployement
+--------------
+1.html file ---> index.html(outside file)
+2.push the code to github
+    git init
+    git add .
+    git commit -m 
+    git 
+3.go to setting-->pages-->src enable main
+4.to check go to action
+
+
+App
+----------------
+islock  ----> true/false
+
+isdelete  ----> true/false
+
+
+
+
+
+
+
+
+
