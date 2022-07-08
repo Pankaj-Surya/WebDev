@@ -326,7 +326,30 @@ isdelete  ----> true/false
 
 
 
+========================================================================================================================
+   08/07/2022                                         Browser --> project-2 : Excel Clone
+========================================================================================================================
+
+CONSTRAINT : 1.GRID    :-   A-Z =>Horizontally
+                         1-100 => vertically
+
+             2.formula :- Set => formula bar
+
+          
+             3.Styling :- First fromula
+                          Font 
+                          Bold Italic Unde;ine
+                          Alignment
 
 
 
-
+Feature :
+          1.menubar
+          2.formulabar
+          3.grid       
+          4.sheet     
+          
+         1.Styling text 
+         2.multiple sheet
+         3.2-way binding 
+         4.formula
