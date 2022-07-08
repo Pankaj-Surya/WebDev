@@ -388,6 +388,40 @@ Feature :
   } 
 
 5.
+  
+  //Parent
+   .grid_container{
+      position : relative
+   }
+
+   //childs
+  .top_row{
+    position : absolute
+    top:-1.5rem
+    left:2rem
+  }
+  .left_col{
+     position : absolute
+
+  }
+
+  .top_row{
+    position : absolute
+  }
+
+  .grid{
+    position : absolute
+  }
+
+  position : if we give prop to parent then child alse set with same
+  if we set parent as relative then (0,0) set then 
+  we make child absolute to start from (0,0) of child
+
+  .grid_container->set parent ---> Relative 
+  .left_col,.top_row,.grid  ---> Absolute--> parent ka (0,0)
+
+
    1.doc.createElement("div")
     .cell.setAttribute("class","cell")
-
+    .
+    .
