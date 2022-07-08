@@ -353,3 +353,41 @@ Feature :
          2.multiple sheet
          3.2-way binding 
          4.formula
+
+
+
+
+1.Height Set for container
+
+2.added number 1-100 and A-Z cell using js
+  2.1 select conatiner
+  2.2 create cell --> loop cell  
+  2.3 for A-z --> used ASCII value String.fromChar (65  +i)
+
+3.overflow problem --> .grid_container => overflow : hidden, visible , scroll(both side scrollbar) , auto(only on neccessary) we can use scroll or auto
+
+4.made empty cell using js
+  //grid
+   .row{
+    display : flex;
+   }
+
+
+  // 1. row
+  for(i : 1-->100){
+      1. row ka div create 
+      2. set attribute class - row   
+     //2. col
+    for(j : 1-->26){
+      1. colm ka div create
+      2. set attribute class -cell
+      3. col.textContet = A-1
+      4.row.append(cell)
+    }
+    grid.append(row)
+  } 
+
+5.
+   1.doc.createElement("div")
+    .cell.setAttribute("class","cell")
+
