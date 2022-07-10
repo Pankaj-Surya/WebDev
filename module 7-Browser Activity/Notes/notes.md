@@ -387,7 +387,7 @@ Feature :
     grid.append(row)
   } 
 
-5.
+5.Postioning relative parent and absolute child
   
   //Parent
    .grid_container{
@@ -412,6 +412,10 @@ Feature :
   .grid{
     position : absolute
   }
+  
+  .tl_cell{
+    position : absolute
+  }
 
   position : if we give prop to parent then child alse set with same
   if we set parent as relative then (0,0) set then 
@@ -425,3 +429,23 @@ Feature :
     .cell.setAttribute("class","cell")
     .
     .
+
+6.Sheet Styling 
+  
+  html 
+  1. div --> class=add_sheet
+  2. div --> class=sheet , myId=1
+
+  .sheet_container{
+
+   display : flex;
+  }
+  .add_sheet{
+   display : flex;
+   align-item:center
+   justify-content:center
+  }
+  .sheet{
+
+  }
+   
