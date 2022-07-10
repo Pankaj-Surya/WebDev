@@ -448,4 +448,89 @@ Feature :
   .sheet{
 
   }
-   
+
+  
+========================================================================================================================
+   10/07/2022                                         Browser --> project-2 : Excel Clone (Day -2)
+========================================================================================================================
+ 
+
+
+ 1. Height of Grid(using calc)
+ 2. creating cell using js
+    2.1--> left col 1-100
+    2.2--> top row A-Z
+    2.3--> Grid -> 2D --> div row in cell
+ 3. positioning grid --> relative parent and absolute child , overflow out of window
+ 4. 
+
+
+ 100 vh --> Browser Window Height
+ 100 vw --> Browser window width
+
+ 80%    --> Relative to your parent
+
+
+
+Features Today
+  1.Addressbar 
+  2.Menu Bar
+  3.2 way Binding
+
+
+1.Styling Formula_Contianer
+
+
+    div                  |      input
+  1.  block
+  2. editable
+
+
+2.In grid when we click on any cell its address reflct in address bar
+ 2.1 in grid : we set these 2 attr to identify each cell
+               without showinng any change on ui
+             -> col.setAttribute("rid",i)
+             -> col.setAttribute("rid",j)
+ 2.2 address bar implementation
+              1. cell evennlistener -> on click
+               for(i : 0--> cell.length){
+                cells[i].addEventlistner("click",function(e)
+                 let cCell =e.cuurentTarget ;
+                 cCell.getAttribute(rid)
+                   cCell.getAttribute(cid)
+               })
+
+               Problem : we are selectiong elemet before creating cell
+               so we make functin init put rest code
+               then call init 
+               then select cell
+
+              2. when cell is clicked -> element
+              3.get rid,cid --> convert to addr bar
+              
+              4.put into addr bar    
+
+
+3. MenuBar Implementation
+               3.1 Design & Styling MenuBar
+                  1.div > class="select_f_family"
+                    select > for dropdowm
+                  2.
+
+                  .menu_bar{
+                    display : flex
+                  }
+
+                  .menu_bar>*{
+                    heiht:80%
+                  }
+
+                  .s
+               3.2
+               3.3
+               3.4
+
+
+
+
+
