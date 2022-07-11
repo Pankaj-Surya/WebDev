@@ -526,11 +526,73 @@ Features Today
                   }
 
                   .s
-               3.2
+               
+               3.2 font size implemetation
+               fntsel=document.querySelectot(".select_f_size");
+               fntselect.addEventListner("change",function(e){
+
+                //1.set->add get fro add bar
+                getcidridFromAddBar()
+                //2. address -> ui cell get(html)
+                //3. styling set
+
+               }              )
+               
+
+               function getcidridFromAddBar(){
+                   addtoridcid(adddress)
+               }
+
+               function addtoridcid(adddress){
+                 //D2 -> rid=2 ,cid=3
+                
+               }
                3.3
+               
                3.4
 
 
+  
+========================================================================================================================
+   11/07/2022                                         Browser --> project-2 : Excel Clone (Day -3)
+========================================================================================================================
+
+Feature : Today
+1.Menu : 
+2.Formula :
 
 
+1.
+ toggle ----> on to off / off to on
 
+
+ make a text bold in css dom --->(fontWight) 1. bold 2. normal
+ make a text italic in css dom ---> (fontStyle)1. italic 2. normal
+make a text underlined in css dom --->(textDecoration) 1. underline 2. normal
+
+boldBtn.evenListner("click",function(){
+ let isSelected = boldBtn.classList[2];
+ if(isSelected =="selected"){
+  1. get the change
+      
+
+  2. where to change
+        let cellToChanged= getCell()
+
+  3. do the change
+      cellToChange.style.fontfamily =fontFamily
+
+
+  
+
+ }else{
+
+ }
+}) 
+
+function getCell(){
+  //1. set ->addr get from addr bar
+  //2. add -> ui cell get
+  //3. style set
+  return
+}
