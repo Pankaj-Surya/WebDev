@@ -563,6 +563,7 @@ Feature : Today
 
 
 1.
+
  toggle ----> on to off / off to on
 
 
@@ -571,23 +572,18 @@ Feature : Today
 make a text underlined in css dom --->(textDecoration) 1. underline 2. normal
 
 boldBtn.evenListner("click",function(){
- let isSelected = boldBtn.classList[2];
- if(isSelected =="selected"){
-  1. get the change
-      
-
-  2. where to change
-        let cellToChanged= getCell()
-
-  3. do the change
-      cellToChange.style.fontfamily =fontFamily
-
-
-  
-
- }else{
-
- }
+   //1. get the change 
+    let isSelected = boldButton.classList[2];
+    //2. where to change
+    let cellToBeChanged = getCell();
+    //3. do the change 
+    if (isSelected == "selected") {
+        boldButton.classList.remove("selected");
+        cellToBeChanged.style.fontWeight = "normal";
+    } else {
+        boldButton.classList.add("selected");
+        cellToBeChanged.style.fontWeight = "bold";
+    }
 }) 
 
 function getCell(){
@@ -596,3 +592,36 @@ function getCell(){
   //3. style set
   return
 }
+
+
+similar for italic and underline
+
+
+2.
+now we want to stored the each cell data to store which property applied on that like font-family, bold ,italic 
+
+  1. we wil make 2D matrix 
+  2. implement 2-way binding --> store data about evry cell in 2d matrix --> every cell has properties
+  3. keep that 2 d array in  .... --> ...
+  4. when u click on any cell --> reflelected changes  in  menu UI
+
+
+  
+
+  let db =[];
+  function initDb(){
+    for(i: 0-->100){
+      let rowArr =[];
+      for(j: 0-->26){
+       let cellObj ={
+        fontfamily:"Courier New"
+        fontSize:"16"
+        isBold:false
+        isItalic:false
+        isUnderlined:false
+       }
+      rowArr.push(cellObj); 
+      }
+     
+    }
+  }
