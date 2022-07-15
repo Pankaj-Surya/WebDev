@@ -625,3 +625,44 @@ now we want to stored the each cell data to store which property applied on that
      
     }
   }
+
+
+
+## How to debug in browser ?
+
+========================================================================================================================
+   13/07/2022                                         Browser --> project-2 : Excel Clone (Day -4)
+========================================================================================================================
+
+
+
+//
+To store the database of previous cell
+
+##Alignment###
+
+1. select All alignmentbtn using querSelectorAll
+2. loop for(i: 0--> alignmentBtns.length()){
+       alignmentBtns[i].addEventListner("click",function(){
+         //1.reomve selected class ffrom every ele
+          for(j: 0-->alignmentBtns.length()){
+           alignmentBtns[j].classList.remove("") 
+          }
+       })
+}  
+.........
+
+
+
+####FormulaBar####
+
+@@ Events 
+ 1. keyboard Input
+        1.1 enter
+ 2. form 
+        2.1 focus
+        2.2 blur
+
+
+
+

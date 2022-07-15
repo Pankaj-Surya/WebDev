@@ -21,8 +21,6 @@ for (let i = 0; i < cells.length; i++) {
     })
 }
 
-
-
 function setMenuBar(rid, cid) {
     let cellObj = db[rid][cid];
     // boldButton
@@ -31,7 +29,6 @@ function setMenuBar(rid, cid) {
     } else {
         boldButton.classList.remove("selected");
     }
-    
     // italicButton
     if (cellObj.isItalic) {
         italicButton.classList.add("selected");
@@ -44,6 +41,22 @@ function setMenuBar(rid, cid) {
     } else {
         underlineButton.classList.remove("selected");
     }
-    console.log(cellObj);
+    // font size
+    fontSizeSelector.value = cellObj.fontSize;
+    // font family
+    fontFamilySelector.value = cellObj.fontFamily;
+    // ui changes 
+    // remove selected class from every elem 
+    for (let j = 0; j < alignmentBtns.length; j++) {
+        alignmentBtns[j].classList.remove("selected");
+    }
+    for (let j = 0; j < alignmentBtns.length; j++) {
+        let iscurrent = alignmentBtns[j].classList[2];
+        if (iscurrent == cellObj.cAlignment) {
+            alignmentBtns[j].classList.add("selected");
+        }
+    }
+
+
 
 }
