@@ -745,3 +745,51 @@ function evaluate(formula){
 function getRidCidFromXSTringAddress(){
 
 }
+
+
+========================================================================================================================
+   17/07/2022                                         Browser --> project-2 : Excel Clone (Day -5)
+========================================================================================================================
+
+cell -->value change 
+        if the cell part of a formula
+          |
+          1.evaluate the CELL again
+          2.set UI
+
+ when you change the value 
+ you tell your children to evaluate       
+
+let say children1 is also depened on another children
+
+1. tell parent to set you as children
+2.  
+function setFormulaInDb(formula,rid,cid,ans){
+
+  ......
+ parent mey apna children set karlo 
+ (A1+A2) --> [0,0] [1,0] 
+
+}
+
+
+1.children check --->parent
+2.evaluate cell
+3.evaluate cRecursively
+
+
+function evaluateChildre(children){
+  if(children.length == 0){
+
+  }
+  for(i:0-->children.length()){
+    let currCHildren =children[i];
+    let {rid,cid} = getRidCidFromStringAddress(currCHildren)
+  
+  }
+}
+
+
+evaluate      --> formula pass --> get val
+setUI/setCell --> UI set / DB Update
+
