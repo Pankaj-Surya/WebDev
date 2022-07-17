@@ -664,5 +664,84 @@ To store the database of previous cell
         2.2 blur
 
 
+💥Constraint💥
+1. A-Z   ---> colms
+2. 1-100 ---> rows
+
+3. Formula Set ---> formula bar
+4. Value Set   ---> cell 
+
+formulaBar --> (A1 + A2)
+
+1. init.js  
+        cellObj   
+              formuala=""
+              value =""
+
+2. 
+  Case 1 : when u click enter in formula bar
+           1.formula string
+             1.1 (A1+A2) ---> get the A1 and A2
+             1.2  Replace with value--> (20+30)
+             1.3  Evaluate -->50
+             1.4  address bar --> get cell address (B1)
+             1.5  UI cell ---> put 50
+             1.6  DB      ---> value =50
+                               formula=(A1+A2)
+
+            when u cell --> blur --> set value in DB
 
 
+
+3. created formula.js
+    //set value
+     for(i:0-->cells.length()){
+       cells[i].addEventListner("blur",function(){
+        //db set value
+        let{rid,cid}=getRidCidFromUI(cells[i])
+        db[][].value =cells[i].value
+       })
+
+     }
+    //set formula
+     formualaBar  --->queryslector
+     formulaBar.addEventListner("keypress",function(e){
+       if(e.key ="Enter" && formula.value != ""){
+        //formula implementaion
+        let formula =formulaBar.value;
+        let ans =evaluate(formula)
+        let {rid,cid}=getRidCidFromAddressBar();
+        setUI(ans,rid,cid)
+        setFormulaToDb(formula,rid,cid,ans);
+
+       }
+     })
+
+
+function getRidCidFromUI(uicell){
+  let rid = uicell.getAttribute("rid");
+  let cid = uicell.getattribute("cid");
+  
+}
+
+function evaluate(formula){
+  //parse--->(A1+A2) get cell from formulaBar
+  //(A1+A2)->split --.array -->[(,A1,+,A2,)]
+  let formulaEnttites =formula.split("");
+   for(i:0-->formulaEnttites.legth){
+    let cEntity = formulaEnttites[i]
+    let ascii = cEntity.charCodeAt(0)
+   
+    if(ascii >=65 && ascii<=90){
+     
+    }
+   }
+
+  //(20+30)-->ans
+}
+
+
+========Helper============
+function getRidCidFromXSTringAddress(){
+
+}
