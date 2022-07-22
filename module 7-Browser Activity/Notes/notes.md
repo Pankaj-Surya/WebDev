@@ -751,6 +751,8 @@ function getRidCidFromXSTringAddress(){
    17/07/2022                                         Browser --> project-2 : Excel Clone (Day -5)
 ========================================================================================================================
 
+CASE 2 :
+
 cell -->value change 
         if the cell part of a formula
           |
@@ -792,4 +794,100 @@ function evaluateChildre(children){
 
 evaluate      --> formula pass --> get val
 setUI/setCell --> UI set / DB Update
+
+
+CASE 3 :
+        if cell has having formula
+        then we remove formula from cell
+         
+        it should be independent
+
+
+        update ---> formula bar
+        delete ---> cell
+        
+
+        1. UI --> val
+ 
+                  children
+
+formula.js
+             set val
+             if(dbcell.formula != ''){
+              removeFormula();
+             }
+
+
+
+Steps :- 1. formula remove
+            |
+            -->2. paret set child remove
+          3.      as well formula remove
+
+              
+
+
+Case 4 : 
+
+       extract formulabar --> set formulabar
+
+       A1
+
+
+Improvemet  ---> 1. parsing 
+                 2. formula validation
+                 3. colm and rows --> generic
+                    we have 100 row and A-Z cell only
+
+
+Graph (cycle Detection)
+                 A1  --> formula : 2  * A3
+                         value   :  10
+                 A2  --> formula : 2  * A1
+                         value   :  20
+                 A3  --> formula :  2  * A2
+                         value   :  30       
+
+
+                          
+
+Sheet   : sheet add ---> myId = 0 add 1
+                         myId+1
+
+let sheetAddbtn =document.querySelector(".add_sheet");
+let sheetSubConatainer =document.querySelector(".add_sheet");
+
+addBtn.addEventListner("click", function(){
+  
+  sheetSubConatainer.appendChild();  
+  ....
+
+  //
+  sheetHtml.addEventListner("click", function()
+
+})
+
+function changeSheet(e){
+ let sheetHtml=e.currenttarget;
+ let s
+}
+
+
+Sheet :  [1,2,3,4]
+        [10,20,30,40]
+            [40,50,60,70]
+
+init.js
+
+sheets[];
+let db=sheets[0];
+
+sheets.push(db);
+
+
+
+
+
+
+
 
