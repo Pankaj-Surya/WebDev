@@ -35,6 +35,17 @@
         }
 
 
+        function CounterParent(){
+            return(
+                <div>
+                    <Counter value ={1}/>
+                    <Counter/>
+                    <Counter/>
+                    <Counter/>
+                    </div>
+            )
+        }
+
        
         //1  it puts  component  return value  in the  div with id=app 
         ReactDOM.render(<Counter></Counter>, document.getElementById("app"));

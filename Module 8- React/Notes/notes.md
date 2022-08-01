@@ -53,6 +53,15 @@ Library    :   tool --> no structure
 
 
 
+=============================================
+     REACT :         Day : 25-07-2022
+==============================================
+
+Pops Vs State
+1.passing parameter in function---> pass attr in component--> prop       & 
+2.making variable in function -->state
+
+
 
 props  --->the parameter passed from parent in the form  of html attr
 parent to child data
@@ -60,4 +69,98 @@ parent to child data
 state 
        usestate(0) --> initial  value store karta hai. 
        [var,function] -function --> val change karta hai
+
+TODO App
+============
+        
+       
+
+         when state variable change(detetction of changes) then i will change UI for that componenet
+
+
+         primitive : directly compare the value 
+         non-primitive : Array,Object -->refernce comparision  
+
+         setTask("hello"--->)
+         const taskArr =[];
+         taskArr.push("Hello")
+         setTask(taskArr)
+
+Spreader : To copy the one to array to other array
+
+Destructring :
+
+
+
+=============================================
+     REACT :         Day : 29-07-2022      
+==============================================
+
+Props :Passed data from parent comp to child comp
+
+map  ---> 
+
+
+❤ Component Divide
+
+Lifting the stateup
+
+##Sending Data### :
+
+ 1. From parent data to child      ---> props in child(props)
+ 2. From Children to parent        ---> inside props pass function
+                                        then go to children call that function
+                                        1.sends the function which needs data as a props
+                                        2.create a  new function in child component
+                                        3.call the parent function inside that function and pass the data as props
+
+                               function InputBox(){         
+                                        function addTaskFromInput(){
+                                            props.addTask(value);
+                                            changeValue("")
+                                        }
+                                    }
+
+                                   <button onClick={addTaskFromInput}>
+
+=============================================
+     REACT :         Day : 31-07-2022      
+==============================================
+
+1.create-react-app   
+setup : react
+        structring 
+        autoreloading
+        react dev tool
+Npm i yarn -g 
+yarn create react-app movies
+
+Add chorme extension--> react dev tool
+Add vscode extension--> ES7 react redux tool
+
+2.How to import a react file?
+what to import -->
+
+import what from "./filekapath"
+
+To use node modules --> import "./"
+
+3.How to export ?
+export default App;
+
+
+                                        Index
+                                          |
+                                         App
+                                          |
+                    ---------------------------------------------- 
+    |               |                      |                     |
+                    default              default               default
+                    comp-1               comp-2                comp-3
+
+
+4.where is root ?
+public--> index.html
+<div id="root"></div>
+
 
