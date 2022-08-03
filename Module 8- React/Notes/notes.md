@@ -164,3 +164,53 @@ public--> index.html
 <div id="root"></div>
 
 
+=============================================
+     REACT :         Day : 01-08-2022      
+==============================================
+
+########### Movies Application ################ 
+
+Feature
+1.Trending movies : they are sourced from TMDB API 
+2.Data Available 
+    2.1 Movies Img Src
+    2.2 Movies Name
+    2.3 Genere --> Type of movies
+    2.4 Rating 
+    2.5 Popular 
+3.Pages : Two Pages
+          1.MainPage : List of Movies
+                       # Banner --> first movies   ka   banner
+                       # List of Trending movies 
+                       # Pagination
+          
+          2.Faviourates : 
+              Header
+              Genre List
+              searchbar,np. of items modifier
+
+## Technical prequisites
+Q.How to make a request in react and render that data on UI(Ajax) 
+  React--> Life Cycle Methods
+  Faviourates Page :Features that are highly used : * Pagination,
+  * Group by
+  * Sorting
+  * Searching
+  * Routing
+
+
+
+Practice : communication between multiple component
+           sending data from one page to another
+
+Day 1 : Static UI,Data recieve 
+Day 2 :
+Day 3 :
+
+
+
+<h1 className="h1style" key={curElm.id}>Name:
+                                    {curElm.myName} & Age: {curElm.age}
+                                    <button className="btnInner" onClick={() => removeElem(curElm.id)}> remove </button>
+                                </h1>
+

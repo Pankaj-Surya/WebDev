@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- react ui change algorithm -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <!-- using react library it changes actual web page -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- babel library converts your jsx into js  -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <!-- babel -> it knowa that we need to convert JSX to simple js  -->
+    <script type="text/babel">
+        // Javascript + HtML -> JSX
+
+        let nameArr =["Rushi","Sandesh"]
+    
+        function Hello(props) {
+            return (
+                <h1>hello  {props.name}</h1>
+            )
+        }
+
+        
+
+
+        //component compose
+        function HelloParent() {
+            return (
+            
+            <div>
+                {
+                // <Hello name="pankaj"> </Hello> 
+                // <Hello name="akash"> </Hello> 
+                // <Hello> </Hello> 
+                // <Hello> </Hello>
+                // {nameArr.map(function fn(name){
+                //    return (<h1> Hello from map {name} </h1> ) ;
+                // })}
+                }
+                                
+            </div>
+            )
+        }
+        // it puts hello component ka output in the app div
+        ReactDOM.render(<HelloParent></HelloParent>, document.getElementById("app"));
+    </script>
+</body>
+
+</html>

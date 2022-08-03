@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- react ui change algorithm -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <!-- using react library it changes actual web page -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- babel library converts your jsx into js  -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="mapList.css">
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <!-- babel -> it knowa that we need to convert JSX to simple js  -->
+    <script type="text/babel">
+        // Javascript + HtML -> JSX
+
+
+
+        //let nameArr =["Rushi","Sandesh","Sunny"];
+
+
+        function Hello() {
+
+            const employessObj = [
+                { id: 1, name: "pankaj" },
+                { id: 2, name: "sandesh" },
+                { id: 3, name: "sunny" },
+                { id: 4, name: "bunny" },
+            ];
+
+            const [empArr, setEmpObj] = React.useState(employessObj);
+
+            function clearList() {
+                console.log("click")
+                console.log(empObj)
+
+                console.log(setEmpObj([]))
+                setEmpObj([]);;
+                console.log("after set")
+            }
+
+            function removeElem(id){
+                   alert(id);
+                  const myNewArray = empArr.filter((curElem) => {
+                    return curElem.id !== id;
+                })
+
+                setmyArray(myNewArray);
+            }
+            return (
+                <div >
+                    <h1 className="headStyle">Name List</h1>
+
+
+                    <div className="list">
+                        {employessObj.map(function (ele, id) {
+                            return (
+                                <h2 key={id}>
+                                    {ele.id}💨{ele.name}
+                                    <button className="btnInner" onClick={() => removeElem(curElm.id)}> remove </button>
+                                    </h2>
+                                )
+                        })}
+                       
+                    </div>
+
+                    <div className="btnDiv">
+                        <button className="btn" onClick={clearList} >Clear</button>
+
+                    </div>
+
+
+
+
+                </div>
+
+            )
+        }
+
+
+
+
+        //component compose
+        function HelloParent() {
+            return (
+
+                <div>
+                    <Hello />
+                    {
+                        // <Hello name="pankaj"> </Hello> 
+                        // <Hello name="akash"> </Hello> 
+                        // <Hello> </Hello> 
+                        // <Hello> </Hello>
+                        // {nameArr.map(function fn(name){
+                        //    return (<h1> Hello from map {name} </h1> ) ;
+                        // })}
+                    }
+
+                </div>
+            )
+        }
+        // it puts hello component ka output in the app div
+        ReactDOM.render(<HelloParent></HelloParent>, document.getElementById("app"));
+    </script>
+</body>
+
+</html>

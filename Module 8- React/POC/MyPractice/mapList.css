@@ -1,0 +1,25 @@
+body{
+    background-color: aqua;
+}
+
+.headStyle{
+    font-size: 40px;
+    text-align: center;
+    background-color: aquamarine;
+}
+.list{
+      text-align: center;
+
+}
+
+.btnDiv{
+     display: flex;
+     justify-content: center;
+    }
+
+.btn{
+    background-color: red;
+    padding: 0.5rem 7rem; 
+    border-radius: 10px;
+    font-size: 20px ;
+}
