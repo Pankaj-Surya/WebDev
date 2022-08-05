@@ -214,3 +214,13 @@ Day 3 :
                                     <button className="btnInner" onClick={() => removeElem(curElm.id)}> remove </button>
                                 </h1>
 
+=============================================
+     REACT :         Day : 03-08-2022      
+==============================================
+React.useeffect ---> 
+It is hook that excutes a fn passed into it  runs after first render 
+
+
+=============================================
+     REACT :         Day : 05-08-2022      
+==============================================
