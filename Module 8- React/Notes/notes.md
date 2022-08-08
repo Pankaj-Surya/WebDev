@@ -220,7 +220,22 @@ Day 3 :
 React.useeffect ---> 
 It is hook that excutes a fn passed into it  runs after first render 
 
+searching done
+
 
 =============================================
      REACT :         Day : 05-08-2022      
 ==============================================
+Searching 
+Sorting 
+filtering
+pagination
+
+Routing 
+
+npm i react-router-dom@5.3.0
+
+
+Icons
+
+npm install flat-color-icons

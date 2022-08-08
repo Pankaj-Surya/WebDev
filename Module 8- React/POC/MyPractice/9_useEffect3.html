@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Resizer</title>
+    <!-- react ui change algorithm -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <!-- using react library it changes actual web page -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- babel library converts your jsx into js  -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="BasicForm.css">
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <!-- babel -> it knowa that we need to convert JSX to simple js  -->
+    <script type="text/babel">
+        // Javascript + HtML -> JSX
+
+       
+          
+
+            const Child = ( ) =>{
+                const [widthCount, setWidthCount] = React.useState(window.screen.width);
+                
+                const actualWidth = () => {
+                    console.log(window.innerWidth);
+                    setWidthCount(window.innerWidth)
+                }
+            
+                React.useEffect(() =>{
+                    console.log("I m useeffect : Add Event");
+                    window.addEventListener("resize",actualWidth);
+                    
+                    return () => {
+                  
+                    window.removeEventListener("resize",actualWidth);
+                    console.log("I m useeffect : Remove Event");
+                    
+                    }
+                    
+                });
+
+
+               
+                console.log("Firt console run")
+
+                return(
+                    <div>
+                        <p>The actual size of the window is : </p>
+                        <h1>{widthCount}</h1>
+                        
+                        </div>
+                )
+            }
+
+
+            function Parent() {
+                return (
+                    <div><Child /></div>
+                )
+            }
+            // it puts hello component ka output in the app div
+            ReactDOM.render(<Parent></Parent>, document.getElementById("app"));
+    </script>
+</body>
+
+</html>

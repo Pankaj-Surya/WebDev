@@ -1,17 +1,35 @@
+// autocomplete 
+// rfce
 import React from 'react'
-import Favourites from './Favourites'
 import Home from './Home';
+import Favourites from './Favourites';
+import PageNotFound from "./PageNotFound";
+import { BrowserRouter } from 'react-router-dom';
+import { Route, Redirect,Switch } from "react-router-dom";
+function Movies() {
+    return (
+        <>
+            {/* switch will run only first matched route   */}
+            <BrowserRouter>
+            <Switch>
+                <Route path="/home">
+                    <Home></Home>
+                </Route>
+                <Route path="/favourites">
+                    <Favourites></Favourites>
+                </Route>
+                {/* if you got / path -> it will send to /movies */}
+                <Redirect from="/" to="/home" exact></Redirect>
+                {/* without any path it will match every route */}
+                <Route>
+                    <PageNotFound></PageNotFound>
+                </Route>
+            </Switch>
+            </BrowserRouter>
+           
 
-function movies() {
-  return (
-    <>
-    <h1>Movies</h1>
-    <Home></Home>
-    {/* <Favourites></Favourites> */}
-    </>
-  )
+        </>
+    )
 }
 
-
-
-export default movies
+export default Movies;
