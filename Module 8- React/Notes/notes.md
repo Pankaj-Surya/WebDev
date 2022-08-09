@@ -133,6 +133,7 @@ setup : react
         autoreloading
         react dev tool
 Npm i yarn -g 
+
 yarn create react-app movies
 
 Add chorme extension--> react dev tool
@@ -163,6 +164,8 @@ export default App;
 public--> index.html
 <div id="root"></div>
 
+Project Link
+https://react-bootcamp-movieapp.netlify.app/
 
 =============================================
      REACT :         Day : 01-08-2022      
@@ -227,8 +230,7 @@ searching done
      REACT :         Day : 05-08-2022      
 ==============================================
 Searching 
-Sorting 
-filtering
+
 pagination
 
 Routing 
@@ -239,3 +241,28 @@ npm i react-router-dom@5.3.0
 Icons
 
 npm install flat-color-icons
+
+
+vade --->
+
+=============================================
+     REACT :         Day : 05-08-2022      
+==============================================
+Passing Favourites data from Home to Favourites Page  
+Sorting 
+filtering
+
+###Passing Favourites data from Home to Favourites Page### 
+1.check movie is Liked or Not Liked
+we will add favourites movies in fav array
+& when unlike remove from array
+2.if that movie id presendt in fav array then that is liked movie
+
+3.created icon(like and cancel) in each movie using bootstarp link in index.jsx
+4.three function 1.show 2.action 3.reaction
+  4.1 checkIfFav( ) --> check like or not 
+  4.2 addToFavorites()  --> add fav movie to fav array
+  4.3 deleteFromFav()  
+
+.we craeted usestate for favourites 
+
