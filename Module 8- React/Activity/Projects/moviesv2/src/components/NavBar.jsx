@@ -7,10 +7,10 @@ function NavBar() {
         ="https://img.icons8.com/external-bearicons-blue-bearicons/50/000000/external-movie-call-to-action-bearicons-blue-bearicons.png">
     </img>
     
-        <div className='text-blue-400 font-bold text-xl md:text-3xl' >Movies</div>
-        <div className='text-blue-400 font-bold text-xl md:text-3xl'>Favorites</div>
+        <Link to="/home" className='text-blue-400 font-bold text-xl md:text-3xl' >Movies</Link>
+        <Link to="/favourites" className='text-blue-400 font-bold text-xl md:text-3xl'>Favorites</Link>
     
-</div>
+   </div>
   )
 }
 
