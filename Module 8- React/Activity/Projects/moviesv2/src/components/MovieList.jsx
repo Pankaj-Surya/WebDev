@@ -1,22 +1,30 @@
 import React from 'react'
 
 
-function MovieList() {
+function MovieList(props) {
     let [movies, setMovie] = React.useState("");
-
+    let [hover, setHover] = React.useState("");
+    let [favourites, setFavourites] = React.useState([]);
     //console.log(results);
-    React.useEffect(async function () {
+    React.useEffect(function fn() {
+        async function fetchData() {
+            // it is used to make request
+            let response = await fetch
+                ("https://api.themoviedb.org/3/trending/movie/week?api_key=16e7df484a81f634d85b2f25f938585d&page=" + props.pageNo);
+            // response -> you will get in buffer -> convert it into json
+            let data = await response.json();
+            console.log(data)
+            let movies = data.results;
+            setMovie(movies);
+        }
+        fetchData();
+    }, [props.pageNo])
 
-        let response = await fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=3d0d19fa95bbcb42f7a4cf93bc4eeead");
-        let data = await response.json();
-        //console.log(data);
-
-        let movies = data.results;
-        //console.log(movies[0].title)
-
-        setMovie(movies);
-    }, [])
-
+    function addToFavourites(movie) {
+        let newArr = [...favourites, movie];
+        setFavourites([...newArr]);
+        console.log(newArr);
+    }
 
 
     return (
@@ -45,7 +53,31 @@ function MovieList() {
                                 {movies.map((movieObj, idx) => {
                                     return (
                                         <div key={idx}>
-                                            <div className={`bg-[url("https://image.tmdb.org/t/p/original//${movieObj.poster_path}")] md:h-[35vh] md:w-[200px] h-[25vh] w-[150px] bg-center bg-cover rounded-xl flex items-end m-4 hover:scale-110 ease-out duration-300 `}>
+                                            <div className={`bg-[url("https://image.tmdb.org/t/p/original//${movieObj.poster_path}")] md:h-[35vh] md:w-[200px] h-[25vh] w-[150px] bg-center bg-cover rounded-xl flex items-end m-4 hover:scale-110 ease-out duration-300 relative `}
+                                                onMouseEnter={() => {
+                                                    setHover(movieObj.id)
+                                                    // console.log(movieObj.id)
+                                                }}
+                                                onMouseLeave={() => setHover("")}
+                                            >
+                                                {
+                                                    hover == movieObj.id && <>{
+                                                        !favourites.find((m) => m.id == movieObj.id) ?
+                                                            <div className='absolute top-2 right-2 p-2 bg-gray-800 rounded-xl text-xl  cursor-pointer'
+                                                                onClick={() => { addToFavourites(movieObj) }}>😍</div>
+                                                            :
+                                                            <div className='absolute top-2 right-2 p-2 bg-gray-800 rounded-xl text-xl  cursor-pointer'
+                                                                onClick={() => { addToFavourites(movieObj) }}>❌</div>
+                                                    }
+
+
+
+
+                                                    </>
+
+
+
+                                                }
                                                 <div className="text-white text-center text-xl font-bold bg-gray-900 w-full rounded-b-lg">{movieObj.title}</div>
                                             </div>
                                         </div>

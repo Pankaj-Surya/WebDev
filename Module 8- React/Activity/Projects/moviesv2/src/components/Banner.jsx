@@ -5,7 +5,8 @@ function Banner() {
   let [firstMovie, setMovie] = React.useState("");
 
   //console.log(results);
-  React.useEffect(async function () {
+  React.useEffect(function fn() {
+    async function fetchData() {
     
     let response = await fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=3d0d19fa95bbcb42f7a4cf93bc4eeead");
     let data = await response.json();
@@ -15,7 +16,9 @@ function Banner() {
     //console.log(movies[0].title)
      
      setMovie(movies[1]);
-  },[])
+  }
+  fetchData()
+},[])
 
  
 
