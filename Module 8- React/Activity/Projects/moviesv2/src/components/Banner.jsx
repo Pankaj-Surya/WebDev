@@ -4,16 +4,24 @@ import { results } from "../MovieData"
 function Banner() {
   let [firstMovie, setMovie] = React.useState("");
 
-  console.log(results);
-  React.useEffect(function () {
-    let firstMovie = results[0];
-    setMovie(firstMovie);
-  }, [])
+  //console.log(results);
+  React.useEffect(async function () {
+    
+    let response = await fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=3d0d19fa95bbcb42f7a4cf93bc4eeead");
+    let data = await response.json();
+    //console.log(data);
+
+    let movies = data.results;
+    //console.log(movies[0].title)
+     
+     setMovie(movies[1]);
+  },[])
+
+ 
 
 
   return (
     <>
-    <h1></h1>
     
     <div className={`bg-[url("https://image.tmdb.org/t/p/original//${firstMovie.backdrop_path}")]
           h-[35vh] md:h-[60vh] bg-center bg-cover flex items-end justify-center`}>
