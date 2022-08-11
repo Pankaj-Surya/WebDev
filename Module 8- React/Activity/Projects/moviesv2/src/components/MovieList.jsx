@@ -20,12 +20,18 @@ function MovieList(props) {
         fetchData();
     }, [props.pageNo])
 
+    //add movie to fav array which is clicked and add to fav array
     function addToFavourites(movie) {
         let newArr = [...favourites, movie];
         setFavourites([...newArr]);
         console.log(newArr);
     }
 
+    //add that movie which not present in fav Array (filter the movie)
+    function removeFromFavourites(movie){
+      let newArr = favourites.filter((m)=> m.id != movie.id)
+      setFavourites([...newArr]);
+    }
 
     return (
         <>
@@ -67,7 +73,7 @@ function MovieList(props) {
                                                                 onClick={() => { addToFavourites(movieObj) }}>😍</div>
                                                             :
                                                             <div className='absolute top-2 right-2 p-2 bg-gray-800 rounded-xl text-xl  cursor-pointer'
-                                                                onClick={() => { addToFavourites(movieObj) }}>❌</div>
+                                                                onClick={() => { removeFromFavourites(movieObj) }}>❌</div>
                                                     }
 
 

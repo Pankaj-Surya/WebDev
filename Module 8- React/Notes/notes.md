@@ -281,3 +281,8 @@ Q.1
 Ans:
 let [currGenre , setCurrGenre ]= React.useState("All Genre ");
 
+Q2
+Styling of Favourites Done
+
+Q3 
+Local storage

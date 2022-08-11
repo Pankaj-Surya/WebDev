@@ -20,7 +20,8 @@ function Movies() {
                 <Redirect from="/" to="/home" exact></Redirect>
                 {/* without any path it will match every route */}
                 <Route>
-                    <PageNotFound></PageNotFound>
+                    <PageNotFound 
+                    ></PageNotFound>
                 </Route>
             </Switch>
 
