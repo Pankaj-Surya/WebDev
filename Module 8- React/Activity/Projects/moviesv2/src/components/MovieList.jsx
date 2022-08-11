@@ -10,29 +10,37 @@ function MovieList(props) {
         async function fetchData() {
             // it is used to make request
             let response = await fetch
-                ("https://api.themoviedb.org/3/trending/movie/week?api_key=16e7df484a81f634d85b2f25f938585d&page=" + props.pageNo);
+            ("https://api.themoviedb.org/3/trending/movie/week?api_key=16e7df484a81f634d85b2f25f938585d&page=" + props.pageNo);
             // response -> you will get in buffer -> convert it into json
             let data = await response.json();
-            console.log(data)
+            console.log(data);
             let movies = data.results;
             setMovie(movies);
+            let oldFav =localStorage.getItem("imdb"); 
+            oldFav=JSON.parse(oldFav);
+            setFavourites([...oldFav]);
         }
         fetchData();
     }, [props.pageNo])
-
+    
     //add movie to fav array which is clicked and add to fav array
     function addToFavourites(movie) {
         let newArr = [...favourites, movie];
         setFavourites([...newArr]);
+        
         console.log(newArr);
+        // add fav data to local storage to stay data after loading/refreshing also
+        localStorage.setItem("imdb",JSON.stringify(newArr))
+        
     }
-
+    
     //add that movie which not present in fav Array (filter the movie)
     function removeFromFavourites(movie){
-      let newArr = favourites.filter((m)=> m.id != movie.id)
-      setFavourites([...newArr]);
+        let newArr = favourites.filter((m)=> m.id != movie.id)
+        setFavourites([...newArr]);
+        
     }
-
+    
     return (
         <>
 

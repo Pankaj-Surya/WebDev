@@ -286,3 +286,14 @@ Styling of Favourites Done
 
 Q3 
 Local storage
+
+1.setting data--> imdb = collectionName
+ localStorage.setItem("imdb",JSON.stringify(newArr))
+        
+2.getting data after first load of page so we add that into useeffect
+ let oldFav =localStorage.getItem("imdb"); 
+            oldFav=JSON.parse(oldFav);
+            setFavourites([...oldFav]); 
+
+
+            
