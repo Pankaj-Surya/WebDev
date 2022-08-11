@@ -252,10 +252,16 @@ Passing Favourites data from Home to Favourites Page
 Sorting 
 filtering
 
+
+
 ###Passing Favourites data from Home to Favourites Page### 
-1.check movie is Liked or Not Liked
+1.movies[ ] and favs[] 
+  movie.id==fav.id 
+         show cancel symobol
+         else  show like symbol 
+check movie is Liked or Not Liked
 we will add favourites movies in fav array
-& when unlike remove from array
+& when unlike remove from fav array
 2.if that movie id presendt in fav array then that is liked movie
 
 3.created icon(like and cancel) in each movie using bootstarp link in index.jsx
@@ -265,4 +271,13 @@ we will add favourites movies in fav array
   4.3 deleteFromFav()  
 
 .we craeted usestate for favourites 
+
+==========
+Favorites Page
+
+Q.1
+1. All Genre , Action , Rommance option we have 
+2. If we click on All Genre the that only make  blue all others like Action and Rommance make Grey
+Ans:
+let [currGenre , setCurrGenre ]= React.useState("All Genre ");
 
