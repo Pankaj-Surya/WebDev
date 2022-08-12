@@ -3,7 +3,36 @@ import NavBar from './NavBar'
 import Pagination from './Pagination'
 
 function Favourites() {
-  const [cuurGenre , setCurrGenre] = React.useState("Action")
+  let genreids = {
+    28: 'Action',
+    12: 'Adventure',
+    16: 'Animation', 35: 'Comedy', 80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family', 14: 'Fantasy', 36: 'History',
+    27: 'Horror', 10402: 'Music', 9648: 'Mystery', 10749: 'Romance', 878: 'Sci-Fi', 10770: 'TV', 53: 'Thriller', 10752: 'War', 37: 'Western'
+  }
+  const [curGenre , setCurrGenre] = React.useState("Action")
+  let [favourites, setFavourites] = React.useState([]);
+  //console.log(results);
+  
+  //for Local Storage
+  //getting data from local storgae  after only one load 
+  React.useEffect(function fn() {
+  
+          // to get fav data arr after page load 
+          let oldFav =localStorage.getItem("imdb"); 
+          oldFav=JSON.parse(oldFav);
+          console.log("oldfav",oldFav)
+          setFavourites([...oldFav]);
+    },[]
+  )
+
+   //add that movie which not present in fav Array (filter the movie)
+   function removeFromFavourites(movie){
+    let newArr = favourites.filter((m)=> m.id != movie.id)
+    setFavourites([...newArr]);
+    localStorage.setItem("imdb",JSON.stringify(newArr))
+    
+}
+
 
   return (
     <>
@@ -11,10 +40,10 @@ function Favourites() {
     <NavBar></NavBar>
     {/*2.Genere Container */}
      <div className='mt-4 px-2 flex justify-center flex-wrap space-x-2'>
-       <button className= {cuurGenre== "All Genere" ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold':'m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'} >
+       <button className= {curGenre== "All Genere" ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold':'m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'} >
         All Genere
        </button>
-       <button className= {cuurGenre== "Action" ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold':'m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'}>
+       <button className= {curGenre== "Action" ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold':'m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'}>
         Action
        </button>
        <button className='m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'>
@@ -104,38 +133,48 @@ function Favourites() {
           <tbody className="bg-white divide-y divide-gray-200">
 
           {/* Row 1 */}
-            <tr >
+          {favourites.map((movieObj)=>(
+            
+           
+            
+              <tr key={movieObj.id} >
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 md:h-[100px] md:w-[180px]">
-                    <img className="hidden md:block md:h-[100px] md:w-[180px]" src={`https://image.tmdb.org/t/p/w500/27Mj3rFYP3xqFy7lnz17vEd8Ms.jpg`} alt="" />
+                    <img className="hidden md:block md:h-[100px] md:w-[180px]" src={`https://image.tmdb.org/t/p/w500/${movieObj.backdrop_path}`} alt="" />
                   </div>
                   <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900 font-bold">Spider</div>
+                    <div className="text-sm font-medium text-gray-900 font-bold">{movieObj.title}</div>
                   </div>
                 </div>
               </td>
+              
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900">8.208</div>
+                <div className="text-sm text-gray-900">{movieObj.vote_average}</div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900">3198.248</div>
+                <div className="text-sm text-gray-900">{movieObj.popularity}</div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                   Action
+                {genreids[movieObj.genre_ids[0]]}
                 </span>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
                 <button href="#" className="text-red-600 hover:text-red-900"
-
+                 onClick={() => removeFromFavourites(movieObj)}
                 >
                   Delete
                 </button>
               </td>
             </tr>
+          
+          ))
+
+          }
+          
           {/* Row 2 */}
-          <tr >
+           {/* <tr >
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 md:h-[100px] md:w-[180px]">
@@ -164,7 +203,8 @@ function Favourites() {
                   Delete
                 </button>
               </td>
-            </tr>
+            </tr>  */}
+
           </tbody>
         </table>
       </div>

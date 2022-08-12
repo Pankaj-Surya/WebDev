@@ -8,6 +8,12 @@ function MovieList(props) {
     //console.log(results);
     React.useEffect(function fn() {
         async function fetchData() {
+
+            // to get fav data arr after page load 
+            let oldFav =localStorage.getItem("imdb"); 
+            oldFav=JSON.parse(oldFav);
+            setFavourites([...oldFav]);
+            
             // it is used to make request
             let response = await fetch
             ("https://api.themoviedb.org/3/trending/movie/week?api_key=16e7df484a81f634d85b2f25f938585d&page=" + props.pageNo);
@@ -16,9 +22,6 @@ function MovieList(props) {
             console.log(data);
             let movies = data.results;
             setMovie(movies);
-            let oldFav =localStorage.getItem("imdb"); 
-            oldFav=JSON.parse(oldFav);
-            setFavourites([...oldFav]);
         }
         fetchData();
     }, [props.pageNo])
@@ -28,7 +31,7 @@ function MovieList(props) {
         let newArr = [...favourites, movie];
         setFavourites([...newArr]);
         
-        console.log(newArr);
+        //console.log(newArr);
         // add fav data to local storage to stay data after loading/refreshing also
         localStorage.setItem("imdb",JSON.stringify(newArr))
         
@@ -38,6 +41,7 @@ function MovieList(props) {
     function removeFromFavourites(movie){
         let newArr = favourites.filter((m)=> m.id != movie.id)
         setFavourites([...newArr]);
+        localStorage.setItem("imdb",JSON.stringify(newArr))
         
     }
     
