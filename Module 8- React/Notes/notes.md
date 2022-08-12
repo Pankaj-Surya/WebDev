@@ -296,4 +296,48 @@ Local storage
             setFavourites([...oldFav]); 
 
 
-            
+Q4 
+How to show fav data in  table format
+
+using Map function
+
+Q5
+How to show All Genre, Action, Music Button Dynamically and on click show only blue buuton on that Genre?
+
+1.we have to take help of favourites Array data from that for each movie  GenreId Array will be there 
+Ex. Minions: The Rise of Gru -> Genere [Family,Action,Thriller]
+2.we will store for each movie will store one genreId
+  in Genre Array --> const [curGenre , setCurrGenre] = React.useState("All Generes")
+3. we will map over Genre Array 
+4.on click on particular Genre SetGenre --> make that blue button
+5.Problem --> To avoid duplicacy two time Animation Genre we will --> Set -->temp = new Set(temp); 
+
+
+Q6
+Delpoyement
+
+1.npm run build --> ready for production
+2.make account in netlify
+3. go to sites option 
+4. scrolldown drag and drop build folder
+
+
+Problem
+can't read poperties of null -->favs.map()
+if Local Storage is not there loop over [] empty array
+oldFav=JSON.parse(oldFav) || [];
+
+
+
+Searching Sorting Filtering
+
+Q7.Filter the movies List Base On Genre
+Ex. click on Action show only Action Movie 
+1.created array --> filteredMovies=[]
+
+2.filteredMovies= currGenre == "All Genres" ?       Favourites : favorites.filter((movie) => genreids[movie.genres_id[0]]==currGenre)
+
+3. Apply Map over filterArray instead favourites
+
+Q8.Sortig based on Popularity and rating
+

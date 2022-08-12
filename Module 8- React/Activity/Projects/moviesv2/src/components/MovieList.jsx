@@ -6,12 +6,13 @@ function MovieList(props) {
     let [hover, setHover] = React.useState("");
     let [favourites, setFavourites] = React.useState([]);
     //console.log(results);
+
     React.useEffect(function fn() {
         async function fetchData() {
 
             // to get fav data arr after page load 
             let oldFav =localStorage.getItem("imdb"); 
-            oldFav=JSON.parse(oldFav);
+            oldFav=JSON.parse(oldFav) || [];
             setFavourites([...oldFav]);
             
             // it is used to make request
