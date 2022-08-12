@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react'
 import NavBar from './NavBar'
 import Pagination from './Pagination'
 
@@ -9,8 +10,10 @@ function Favourites() {
     16: 'Animation', 35: 'Comedy', 80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family', 14: 'Fantasy', 36: 'History',
     27: 'Horror', 10402: 'Music', 9648: 'Mystery', 10749: 'Romance', 878: 'Sci-Fi', 10770: 'TV', 53: 'Thriller', 10752: 'War', 37: 'Western'
   }
-  const [curGenre , setCurrGenre] = React.useState("Action")
-  let [favourites, setFavourites] = React.useState([]);
+  const [curGenre , setCurrGenre] = React.useState("All Generes")
+  const [favourites, setFavourites] = React.useState([]);
+  const [genres,setGenres]=React.useState([]);
+
   //console.log(results);
   
   //for Local Storage
@@ -24,6 +27,17 @@ function Favourites() {
           setFavourites([...oldFav]);
     },[]
   )
+
+
+  //for genres get -> to build those blue/grey button
+  React.useEffect(( )=>{
+    //console.log(favourites);
+    let temp = favourites.map((movie)=> genreids[movie.genre_ids[0]])
+    console.log(temp);
+    setGenres(["All Generes",...temp]);
+
+
+  },[favourites])
 
    //add that movie which not present in fav Array (filter the movie)
    function removeFromFavourites(movie){
@@ -40,13 +54,19 @@ function Favourites() {
     <NavBar></NavBar>
     {/*2.Genere Container */}
      <div className='mt-4 px-2 flex justify-center flex-wrap space-x-2'>
-       <button className= {curGenre== "All Genere" ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold':'m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'} >
-        All Genere
-       </button>
-       <button className= {curGenre== "Action" ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold':'m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'}>
+       {
+        genres.map((genre,id)=>
+        <button key={id} className= {curGenre== genre ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold':
+                                                'm-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'} >
+          {genre}
+       </button>)
+       }
+       
+       
+       {/* <button className= {curGenre== "Action" ? 'm-2 text-lg p-1 px-2 bg-blue-400 text-white rounded-xl font-bold':'m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'}>
         Action
-       </button>
-       <button className='m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'>
+       </button> */}
+       {/* <button className='m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'>
         Animation
        </button>
        <button className='m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'>
@@ -63,7 +83,7 @@ function Favourites() {
        </button>
        <button className='m-2 text-lg p-1 px-2 bg-gray-400 hover:bg-blue-400 text-white rounded-xl font-bold'>
         Rommance
-       </button>
+       </button> */}
      </div>
 
      {/*3.Input Container */}
