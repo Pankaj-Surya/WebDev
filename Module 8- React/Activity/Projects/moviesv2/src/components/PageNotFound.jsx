@@ -1,6 +1,12 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 function PageNotFound() {
+  
+
+  // function goToHome(){
+  //    return  <Redirect path="/home"></Redirect>
+  // }
   return (
     <>
     <div class="flex items-center justify-center w-screen h-screen bg-red-50">
@@ -18,11 +24,9 @@ function PageNotFound() {
         <p class="mb-8 text-center text-gray-500 md:text-lg">
           The page you’re looking for doesn’t exist.
         </p>
-        <a
-          href="#"
+        <Link to="/home"
           class="px-6 py-2 text-sm font-semibold text-blue-800 bg-blue-100"
-         >Go home</a
-        >
+         >Go Home </Link>
       </div>
       <div class="mt-4">
         <img

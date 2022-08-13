@@ -72,7 +72,14 @@ function MovieList(props) {
                                 {movies.map((movieObj, idx) => {
                                     return (
                                         <div key={idx}>
-                                            <div className={`bg-[url("https://image.tmdb.org/t/p/original//${movieObj.poster_path}")] md:h-[35vh] md:w-[200px] h-[25vh] w-[150px] bg-center bg-cover rounded-xl flex items-end m-4 hover:scale-110 ease-out duration-300 relative `}
+                                            <div className={`bg-[url("https://image.tmdb.org/t/p/original//${movieObj.poster_path}")] 
+                                            md:h-[35vh] md:w-[200px]
+                                             h-[25vh] w-[150px] 
+                                             bg-center bg-cover
+                                              rounded-xl
+                                               flex items-end m-4
+                                                hover:scale-110 ease-out duration-300 
+                                                relative `}
                                                 onMouseEnter={() => {
                                                     setHover(movieObj.id)
                                                     // console.log(movieObj.id)
@@ -97,7 +104,10 @@ function MovieList(props) {
 
 
                                                 }
-                                                <div className="text-white text-center text-xl font-bold bg-gray-900 w-full rounded-b-lg">{movieObj.title}</div>
+                                                <div className="text-white text-center 
+                                                                sm:text-sm md:text-lg text-xl 
+                                                                font-bold bg-gray-900
+                                                                 w-full rounded-b-lg">{movieObj.title}</div>
                                             </div>
                                         </div>
 

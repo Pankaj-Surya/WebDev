@@ -1,25 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-function Pagination() {
-    const [pageNo, setpageNumber] = React.useState(1);
-    function incPageNumber(){
-     setpageNumber(pageNo+1)
-    }
-    function decPageNumber(){
-      if (pageNo == 1) {
-        return;
-    }
-    setpageNumber(pageNo-1)  
-    }
+function Pagination({pageProp,goBack,goAhead}) {
 
-
-  return (
-    <div className='mb-4 '>
-        <button className='p-2 border border-red-300  text-red-400 border-r-0 rounded-l-xl' onClick={decPageNumber}>Previous</button>
-        <button className='p-2 border border-red-300  text-red-400 shadow-indigo-500/50 bg-gray-200'>{pageNo}</button>
-        <button className='p-2 border border-red-300  text-red-400 border-l-0 rounded-r-xl' onClick={incPageNumber}>Next</button>
+  return <>
+    <div className="w-full 
+    flex justify-center
+    mb-8
+    ">
+      <button className="
+            p-2
+            border-2
+            border-indigo-500
+            text-indigo-500
+            border-r-0
+            rounded-l-xl
+        "
+        onClick={goBack}
+      >Previous</button>
+      <button className="
+            p-2
+            border-2
+            border-indigo-500
+            text-indigo-500
+            bg-gray-300
+            ">
+              {pageProp}
+            </button>
+      <button className="
+            p-2
+            border-2
+            border-indigo-500
+            text-indigo-500
+            border-l-0
+            rounded-r-xl
+            "
+        onClick={goAhead}
+        >Next</button>
     </div>
-  )
+  </>
 }
 
-export default Pagination
+export default Pagination;

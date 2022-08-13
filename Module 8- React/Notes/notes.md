@@ -339,5 +339,50 @@ Ex. click on Action show only Action Movie
 
 3. Apply Map over filterArray instead favourites
 
+
 Q8.Sortig based on Popularity and rating
 
+const [rating, setRating] = React.useState(0);
+
+  if (rating == 1) {
+    filteredMovies = filteredMovies.sort(function (objA, objB) {
+      return objA.vote_average - objB.vote_average
+    })
+
+  } else if (rating == -1) {
+    filteredMovies = filteredMovies.sort(function (objA, objB) {
+      return objB.vote_average - objA.vote_average
+    })
+  }
+
+Q9 Searching 
+
+
+1.const [search, setSearch] = useState("")
+2.filteredMovies = filteredMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(search.toLowerCase())
+  )
+3. value={search} onChange={(e) => setSearch(e.target.value)}
+
+Q10
+Pagination
+
+1. const [curPage, setCurPage] = useState(1)
+2.  let maxPage = Math.ceil(filteredMovies.length / rows);
+  let si = (curPage - 1) * rows
+  let ei = Number(si) + Number(rows)
+
+  filteredMovies = filteredMovies.slice(si, ei);
+
+  let goBack = () => {
+    if (curPage > 1) {
+      setCurPage(curPage - 1)
+    }
+  }
+
+  let goAhead = () => {
+    if (curPage < maxPage) {
+      setCurPage(curPage + 1)
+    }
+  }
+3. pageProp={curPage} goBack={goBack} goAhead={goAhead}

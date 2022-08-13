@@ -16,9 +16,9 @@ function Favourites() {
   const [rating, setRating] = React.useState(0);
   const [popularity, setPopularity] = React.useState(0);
 
-  // const [search, setSearch] = React.useState("")
-  // const [rows, setRows] = React.useState(5)
-  // const [curPage, setCurPage] = React.useState(1)
+   const [search, setSearch] = React.useState("")
+  const [rows, setRows] = React.useState(5)
+  const [curPage, setCurPage] = React.useState(1)
 
   //console.log(results);
 
@@ -84,6 +84,29 @@ function Favourites() {
     })
   }
 
+  //searching 
+  filteredMovies = filteredMovies.filter((movie) =>
+  movie.title.toLowerCase().includes(search.toLowerCase())
+)
+
+   // pagination
+   let maxPage = Math.ceil(filteredMovies.length / rows);
+   let si = (curPage - 1) * rows
+   let ei = Number(si) + Number(rows)
+ 
+   filteredMovies = filteredMovies.slice(si, ei);
+ 
+   let goBack = () => {
+     if (curPage > 1) {
+       setCurPage(curPage - 1)
+     }
+   }
+ 
+   let goAhead = () => {
+     if (curPage < maxPage) {
+       setCurPage(curPage + 1)
+     }
+   }
 
   return (
     <>
@@ -126,9 +149,9 @@ function Favourites() {
 
       {/*3.Input Container */}
       <div className='text-center'>
-        <input type="text" placeholder='Search' className='border border-2 text-center p-1 m-2 rounded-lg' />
-        <input type="number" placeholder='Rows' className='border border-2 text-center p-1 m-2 rounded-lg' />
-      </div>
+      <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search' className='border border-2 text-center p-1 m-2' />
+      <input type="number" value={rows} onChange={(e) => setRows(e.target.value)} placeholder='Rows' className='border border-2 text-center p-1 m-2' />
+    </div>
 
       {/*4.Table Container  */}
 
@@ -292,7 +315,7 @@ function Favourites() {
 
 
       {/*5.Pagination */}
-      <Pagination></Pagination>
+      <Pagination pageProp={curPage} goBack={goBack} goAhead={goAhead}></Pagination>
     </>
 
   )
