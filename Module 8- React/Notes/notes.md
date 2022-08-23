@@ -392,7 +392,82 @@ Pagination
 
 
 =============================================
-     REACT :  Insta Reel       Day : 20-08-2022     
+     REACT :  Insta Reel       Day : 2--08-2022     
 ==============================================
+UseReducer--> react-pocs as show
 
 
+const [state ,dispatch]=useReducer(reducer,intitalState)
+
+1.reducer : It is fn takes two argument--> reducer(state,action){} --> always return state
+            1.can be defined inside fn and outside fn also
+            2.state argument --> current state
+            3.action --> type --> type can be increment , decrement 
+                btn1--> onclik= dispatch({type:"Increment"})
+                btn2--> onclik= dispatch({type:"Decrement"})
+            4.defined action.type in reducer method and give logic to that type
+                if(action.type=="Increment"){
+                   return state+1;
+                }
+                if(action.type=="Decrement"){
+                   return state-1;
+                }
+
+  
+
+=============================================
+     REACT :  Insta Reel       Day : 23-08-2022     
+==============================================
+🥧
+Redux -->
+    Issues :1.lifting the   stateup    -> child to parent prop
+            2.Prop Drilling ->
+    prop passing in lower level drill  --> home --> nav --> islogin
+UseCase : 
+Code Flow :
+Terminology :
+
+Redux-->Create a global store
+
+
+Code Flow : Change 
+
+1.counter build --->
+  UI  -->  +  0  -
+state update -->change 
+
+2.bat ---> 
+state update --> change --> not known
+
+3.User Data --> 
+User ? loader : Data
+state update 
+
+
+1.npm i redux react-redux
+2.create redux folder in src and store.js file in it
+3.create reducer file pass intial state to it
+3.In store.js
+  Inbuilt function--> createStore()
+
+
+1.Set the state
+2.Update the state
+
+Do we need to contact store or reducer
+
+1.Set the state
+
+Reducer :1. to provide the state
+2.to update the state
+
+Intial State --> Reducer -->Store--->App(Provider)--> connect (
+  1.mapStatetoProp->store
+  2.mapdispatchtoprop->dispatch)-->component (as prop)
+
+2.Update the state
+  dispatcher: componet to reducer talk using action (action.type==increment)
+
+**jiska dispatch call hota hai woh render hota hai
+
+**Always run the mapStatetoProp
