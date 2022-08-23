@@ -386,3 +386,13 @@ Pagination
     }
   }
 3. pageProp={curPage} goBack={goBack} goAhead={goAhead}
+
+
+
+
+
+=============================================
+     REACT :  Insta Reel       Day : 20-08-2022     
+==============================================
+
+

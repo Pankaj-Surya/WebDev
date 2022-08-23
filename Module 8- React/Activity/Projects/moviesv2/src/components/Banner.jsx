@@ -12,7 +12,7 @@ function Banner() {
     let data = await response.json();
     //console.log(data);
 
-    let movies = data.results;
+    let movies =await data.results;
     //console.log(movies[0].title)
      
      setMovie(movies[1]);
