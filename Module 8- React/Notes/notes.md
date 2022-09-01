@@ -471,3 +471,34 @@ Intial State --> Reducer -->Store--->App(Provider)--> connect (
 **jiska dispatch call hota hai woh render hota hai
 
 **Always run the mapStatetoProp
+
+
+
+=============================================
+     REACT :  Insta Reel       Day : 25-08-2022     
+==============================================
+
+Recoil,flux alternative to redux
+
+let say in case of  counter  
+
+check whether reducer can do work or not?
+
+
+Middleware : if i pass payload  or action 
+
+if action   --> forword    --> 
+if function --> data get  -->
+
+when dispatch dosent have data call middleware. this will middleware get dta 
+
+------------
+Firebase : backend as service 
+           1.login --> firebase auth
+           2.DB access --> reel --> storage link
+           3.file storage -->firebase storage 1.upload 
+                   2.download 
+                   3.to store multimedia file 
+
+
+https://firebase.google.com/docs/auth/web/google-signin#web-version-8_1
