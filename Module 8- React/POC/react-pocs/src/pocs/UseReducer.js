@@ -57,16 +57,20 @@ function UseReducer() {
             <button onClick={() => { dispatch({ type: "incby5" }) }}>+5</button>
             <button onClick={() => { dispatch({ type: "decby5" }) }}>-5</button>
             <br></br>
+
             <input placeholder='value' value={inpValue}
                 onChange={(e) => { setInpValue(e.target.value) }}></input>
+
             <button onClick={() => { dispatch({ type: "setValue", payload: inpValue }) }}
             >setValue</button>
             <br></br>
+
             <input placeholder="color" value={inpColor}
                 onChange={(e) => { setInpColor(e.target.value) }}></input>
             <button
                 onClick={() => { dispatch({ type: "setColor", payload: inpColor }) }}
             >setColor</button>
+            
             <br></br>
             <button onClick={() => { dispatch({ type: "reset" }) }}>reset</button>
         </>
