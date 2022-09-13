@@ -65,8 +65,11 @@ function UseReducer() {
             >setValue</button>
             <br></br>
 
+            {/* Input Color */}
             <input placeholder="color" value={inpColor}
                 onChange={(e) => { setInpColor(e.target.value) }}></input>
+           
+            {/* Set Color */}
             <button
                 onClick={() => { dispatch({ type: "setColor", payload: inpColor }) }}
             >setColor</button>

@@ -1,10 +1,12 @@
 import './App.css';
-import CounterReducer from './components/CounterReducer';
+import ComplexUseState from './components/ComplexUseState';
+import UseReducerCounter from './components/UseReducerCounter';
 
 function App() {
   return (
     <div className="App">
-     <CounterReducer></CounterReducer>
+    <ComplexUseState></ComplexUseState>
+    <UseReducerCounter></UseReducerCounter>
     </div>
   );
 }
