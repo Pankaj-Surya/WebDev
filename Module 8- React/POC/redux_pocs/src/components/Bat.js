@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 function Bat(props) {
-  console.log(props)
-  
+  console.log("Bat Comp",props)  
   const buybatss = props.buybatt
   const sellbatss = props.sellbatt  
   return (
@@ -18,7 +17,7 @@ function Bat(props) {
 function mapStateToProps(state){
     console.log("mapStateToProps method")
     return {
-        bat : state.bat
+        bat : state.Bat.bat
     }
 }
 
