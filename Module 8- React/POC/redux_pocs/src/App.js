@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import store from './redux/store';
 import Bat from './components/Bat';
 import Ball from './components/Ball';
+import User from './components/User';
 function App() {
   return (
 
@@ -13,10 +14,13 @@ function App() {
     // <UseReducerCounter></UseReducerCounter>
     // </div>
   
-    <Provider store={store}>
-     <Bat></Bat>
-     <Ball></Ball>
-    </Provider>
+    // <Provider store={store}>
+    //  <Bat></Bat>
+    //  <Ball></Ball>
+    
+    // </Provider>
+
+    <User></User>
   );
 }
 

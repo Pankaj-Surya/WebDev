@@ -5,16 +5,19 @@ import { initializeApp } from "firebase/app";
 
 
 // 1. import
+import firebase from "firebase/app";
+import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAj-lhOwPz-xbA1Ojm5MRbBYtb8yzWhXmI",
-  authDomain: "insta123-e057d.firebaseapp.com",
-  projectId: "insta123-e057d",
-  storageBucket: "insta123-e057d.appspot.com",
-  messagingSenderId: "354096834728",
-  appId: "1:354096834728:web:a237219d2aa62759517a9d"
+  apiKey: "AIzaSyCbXusUQXd46Whuud4-vWgmkjUg1PuXIb4",
+  authDomain: "insta-reels-37f1b.firebaseapp.com",
+  projectId: "insta-reels-37f1b",
+  storageBucket: "insta-reels-37f1b.appspot.com",
+  messagingSenderId: "886353224354",
+  appId: "1:886353224354:web:34586c52304ce03bf6edfb"
 };
 
 // Initialize Firebase
@@ -22,9 +25,11 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 export const googleAuth = new firebase.auth.GoogleAuthProvider();
 export default firebase;
+
+// firebase authentication
 export const auth = firebase.auth();
 
-// 2.
+// 2. firebase firestore
 const firestore = firebase.firestore();
 
 // 3. to shorten the syntax
@@ -33,3 +38,6 @@ export const database = {
     getCurrentTimeStamp:
         firebase.firestore.FieldValue.serverTimestamp,
 }
+
+// firebase storage
+export const storage = firebase.storage();
