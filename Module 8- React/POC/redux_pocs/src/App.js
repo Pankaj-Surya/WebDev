@@ -14,13 +14,17 @@ function App() {
     // <UseReducerCounter></UseReducerCounter>
     // </div>
   
-    // <Provider store={store}>
-    //  <Bat></Bat>
-    //  <Ball></Ball>
-    
-    // </Provider>
+    <Provider store={store}>
+      {/* <br />
+     <Bat></Bat>
+     <br />
+     <Ball></Ball>
+     <br />
+     <br /> */}
+     <User></User>
+    </Provider>
 
-    <User></User>
+   
   );
 }
 

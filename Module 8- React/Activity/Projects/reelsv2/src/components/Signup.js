@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import { auth, database,storage } from "../firebase";
 
 function Signup() {
+  
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [filePath, setFilePath] = useState("")
+
+  
+  
   async function signupHandler() {
     // alert(email + " " + password + " " + name)
     try {
