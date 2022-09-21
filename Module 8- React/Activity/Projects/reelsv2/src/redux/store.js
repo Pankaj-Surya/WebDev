@@ -1,10 +1,17 @@
-import {createStore} from "redux"
+import {createStore,applyMiddleware} from "redux"
 import authReducer from "./authReducer"
-import  {applyMiddleware} from "redux"
-import {getFirebase} from "react-redux-firebase"
+import {getFirebase, firebaseReducer} from "react-redux-firebase"
+import thunk from "redux-thunk"
+import {combineReducers} from "redux";
 
+const rootreducer = combineReducers({
+    auth: authReducer,
+    firebase: firebaseReducer
+})
 
-import {reduxFirestore ,getFirestore} from "re"
+const store = createStore(rootreducer,
+    applyMiddleware
+            (thunk.withExtraArgument({ getFirebase })));
+            //redux binding for firebase );
 
-
-const reduxStore = createStore(authReducer,applyMiddleware(thunk.withExtraArgumnet({getFirebase,getFirestore})))
+export default store;

@@ -11,7 +11,7 @@ import "firebase/firestore";
 import "firebase/storage"
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyCbXusUQXd46Whuud4-vWgmkjUg1PuXIb4",
   authDomain: "insta-reels-37f1b.firebaseapp.com",
   projectId: "insta-reels-37f1b",
@@ -24,7 +24,7 @@ const firebaseConfig = {
 
 const app = firebase.initializeApp(firebaseConfig);
 export const googleAuth = new firebase.auth.GoogleAuthProvider();
-export default firebase;
+
 
 // firebase authentication
 export const auth = firebase.auth();
@@ -39,5 +39,9 @@ export const database = {
         firebase.firestore.FieldValue.serverTimestamp,
 }
 
+
+
 // firebase storage
 export const storage = firebase.storage();
+
+export default firebase;

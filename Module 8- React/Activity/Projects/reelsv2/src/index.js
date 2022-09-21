@@ -2,12 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-
+import store from "./redux/store"
+import { Provider } from 'react-redux';
+import {ReactReduxFirebaseProvider} from 'react-redux-firebase'
+import firebase, { firebaseConfig } from "./firebase";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-    <App />
+    <Provider store ={store}>
+       
+         <ReactReduxFirebaseProvider
+          firebase ={firebase}
+
+          config={firebaseConfig}
+
+          dispatch={store.dispatch}
+         >
+            {/* // firebase lib link */}
+           
+
+            <App />
+         </ReactReduxFirebaseProvider>
+    </Provider>
+   
 
 );
 
