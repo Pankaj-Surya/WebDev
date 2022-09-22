@@ -6,7 +6,7 @@ import store from "./redux/store"
 import { Provider } from 'react-redux';
 import {ReactReduxFirebaseProvider} from 'react-redux-firebase'
 import firebase, { firebaseConfig } from "./firebase";
-
+import {  createFirestoreInstance } from 'redux-firestore';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
@@ -18,6 +18,8 @@ root.render(
           config={firebaseConfig}
 
           dispatch={store.dispatch}
+
+          createFirestoreInstance={createFirestoreInstance}
          >
             {/* // firebase lib link */}
            

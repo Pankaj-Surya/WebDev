@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {connect} from "react-redux"
-import {signInMiddleware} from "../redux/authMiddleware"
+import {signInMiddleware,signOutMiddleware} from "../redux/authMiddleware"
 
 function Login(props) {
     
@@ -27,7 +27,7 @@ function Login(props) {
   return (
 
     <>
-    {props.auth.isLoggedIn==true ? <button>Sign out</button>:
+    {props.auth.isLoggedIn==true ? <button onClick={props.logout}>Sign out</button>:
         <>
         <h1>Login</h1>
         <input type="text" placeholder="email"

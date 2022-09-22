@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { auth, database,storage } from "../firebase";
+import { signUpMiddleWare } from "../redux/authMiddleware";
+import { connect } from "react-redux";
 
-function Signup() {
+function Signup(props) {
   
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = useState("");
@@ -18,58 +20,14 @@ function Signup() {
         alert("All Fields are requiered")
         return
       }
-
-      // 1. create user 
-      const userCreds = await auth
-        .createUserWithEmailAndPassword(email, password);
-      const userId = userCreds.user.uid;
-      // database -> user collection and then create a doc with 
-      // uid as key and it's data as value
-      alert("user signed up");
        
-      //2. uploading the user image
-      const uploadtask = storage.ref(`/users/${userId}/profileImage`).put(filePath);
-      uploadtask.on("state_changed",progressCb,errorCb,successCb)
-
-      function progressCb(snapShot){
-        var progress = (
-          snapShot.bytesTransferred /
-          snapShot.totalBytes) * 100;
-        console.log("Progress: ", progress, "%");
+      let obj = {
+        email,password,name,filePath
       }
 
+      props.signupWithFirebase(obj)
 
-      function errorCb(err){
-      console.log(err.message)
-      console.log("payload -> ",err.payload)
-      }
-
-      async function successCb(){
-         // image upload -> complete 
-        // img url
-
-        let imgUrl = await uploadtask.snapShot.ref.getDownloadURL();
-         //  doc -> img url -> upload -> firestore 
-
-         let docSnap = await database.user.doc(userId).set({
-          name:name,
-          email : email,
-          createdAt : database.getCurrentTimeStamp(),
-          profileImageLink : imgUrl
-         })
-      }
-      // . added to firestore -> Database
-      let docSnap = await database.users.doc(userId).set({
-        name: name,
-        email: email,
-        createdAt: database.getCurrentTimeStamp()
-      })
-      console.log(docSnap.data())
-
-      // alert("uid: ", userCreds.user.uid);
-      // console.log(userCreds.user.uid);
-      // alert("user created");
-      // set user in the collection
+      
     } catch (err) {
       alert(err.message);
     }
@@ -127,4 +85,21 @@ function Signup() {
   );
 }
 
-export default Signup;
+function mapStateToProps(store){
+  console.log("store from signup",store)
+  return{ 
+    auth : store.auth,
+    firebase : store.firebase
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    signupWithFirebase: function (userDataOBj) {
+      dispatch(signUpMiddleWare(userDataOBj))
+  }
+}
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Signup)

@@ -7,8 +7,10 @@ function App() {
   return (
     <div className="App">
       <h1>Reels</h1>
-      {/* <Signup></Signup> */}
-      <Login></Login>
+     
+      <Signup></Signup>
+      {/* <Login></Login> */}
+    
     </div>
   );
 }
