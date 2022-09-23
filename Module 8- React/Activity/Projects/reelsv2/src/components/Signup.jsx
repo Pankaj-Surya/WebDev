@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { auth, database,storage } from "../firebase";
 import { signUpMiddleWare } from "../redux/authMiddleware";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { isLoaded } from "react-redux-firebase";
+
 
 function Signup(props) {
   
@@ -46,42 +49,48 @@ function Signup(props) {
 
   return (
     <>
-      <div>Signup Page </div>
-      <input
-        type="email"
-        placeholder="Enter Email"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      ></input>
-      <br></br>
-      <input
-        type="password"
-        placeholder="Enter Password"
-        value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      ></input>
-      <br></br>
-      <input
-        type="text"
-        placeholder="Full Name"
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-      />
-      <br></br>
-      {/* uncontrolled input -> input type file  */}
-      <input type="File" onChange={(e) => {
-        setFilePath(e.target.files[0]);
-        // console.log(e.target.files)f
-      }}></input>
-      <br></br>
-      <button onClick={signupHandler}>Signup</button>
+    {
+       isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined ? <Redirect to="/"></Redirect> :
+       <>
+       <div>Signup Page </div>
+       <input
+         type="email"
+         placeholder="Enter Email"
+         value={email}
+         onChange={(e) => {
+           setEmail(e.target.value);
+         }}
+       ></input>
+       <br></br>
+       <input
+         type="password"
+         placeholder="Enter Password"
+         value={password}
+         onChange={(e) => {
+           setPassword(e.target.value);
+         }}
+       ></input>
+       <br></br>
+       <input
+         type="text"
+         placeholder="Full Name"
+         value={name}
+         onChange={(e) => {
+           setName(e.target.value);
+         }}
+       />
+       <br></br>
+        {/* uncontrolled input -> input type file   */}
+       <input type="File" onChange={(e) => {
+         setFilePath(e.target.files[0]);
+         // console.log(e.target.files)f
+       }}></input>
+       <br></br>
+       <button onClick={signupHandler}>Signup</button>
+     </> 
+    }
     </>
+        
   );
 }
 
@@ -103,3 +112,10 @@ function mapDispatchToProps(dispatch){
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(Signup)
+
+
+
+
+
+
+

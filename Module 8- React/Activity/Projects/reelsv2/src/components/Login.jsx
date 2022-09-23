@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {connect} from "react-redux"
 import {signInMiddleware,signOutMiddleware} from "../redux/authMiddleware"
+import { Redirect } from 'react-router-dom';
+import { isLoaded } from 'react-redux-firebase';
 
 function Login(props) {
     
@@ -27,7 +29,7 @@ function Login(props) {
   return (
 
     <>
-    {props.auth.isLoggedIn==true ? <button onClick={props.logout}>Sign out</button>:
+    {isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined  ? <Redirect to="/"></Redirect>:
         <>
         <h1>Login</h1>
         <input type="text" placeholder="email"
@@ -53,7 +55,8 @@ function Login(props) {
 function mapStateToProps(store){
   console.log("store",store)
    return {
-      auth : store.auth
+      auth : store.auth,
+      firebase :store.firebase
    }
 }
 

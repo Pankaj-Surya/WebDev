@@ -30,7 +30,7 @@ export const googleAuth = new firebase.auth.GoogleAuthProvider();
 export const auth = firebase.auth();
 
 // 2. firebase firestore
-const firestore = firebase.firestore();
+ export const firestore = firebase.firestore();
 
 // 3. to shorten the syntax
 export const database = {

@@ -2,32 +2,39 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+//normal redux
 import store from "./redux/store"
 import { Provider } from 'react-redux';
-import {ReactReduxFirebaseProvider} from 'react-redux-firebase'
+// to integrate redux into firebase
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 import firebase, { firebaseConfig } from "./firebase";
-import {  createFirestoreInstance } from 'redux-firestore';
+import { createFirestoreInstance } from 'redux-firestore';
+// Routing
+import { BrowserRouter } from 'react-router-dom';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-    <Provider store ={store}>
-       
-         <ReactReduxFirebaseProvider
-          firebase ={firebase}
+    <Provider store={store}>
 
-          config={firebaseConfig}
+        <BrowserRouter>
+            <ReactReduxFirebaseProvider
+                firebase={firebase}
 
-          dispatch={store.dispatch}
+                config={firebaseConfig}
 
-          createFirestoreInstance={createFirestoreInstance}
-         >
-            {/* // firebase lib link */}
-           
+                dispatch={store.dispatch}
 
-            <App />
-         </ReactReduxFirebaseProvider>
+                createFirestoreInstance={createFirestoreInstance}
+            >
+                {/* // firebase lib link */}
+
+
+                <App />
+            </ReactReduxFirebaseProvider>
+        </BrowserRouter>
     </Provider>
-   
+
 
 );
 

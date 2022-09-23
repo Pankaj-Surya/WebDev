@@ -12,12 +12,12 @@ import AboutUs from './components/presentation/aboutUs';
 import Contacts from './components/presentation/contact';
 import Education from './components/presentation/education';
 import Finalize from  './components/presentation/finalizePage';
-
+import {Form} from "./components/multiform"
 
 function App() {
   return (
     <div>
-     <Header></Header>
+     {/* <Header></Header>
 
      <Switch>
           <Route path="/education" component={Education}></Route>
@@ -30,7 +30,10 @@ function App() {
           <Route path="/register" component={Register}></Route>             
           <Route path="/" component={LandingPage}></Route>
       </Switch>
-      <Footer></Footer>   
+      <Footer></Footer>    */}
+
+    <Form></Form>
+    
     </div>
    
   );
