@@ -35,6 +35,8 @@ export const auth = firebase.auth();
 // 3. to shorten the syntax
 export const database = {
     users: firestore.collection('users'),
+    posts:firestore.collection('posts'),
+    comments:firestore.collection('comments'),
     getCurrentTimeStamp:
         firebase.firestore.FieldValue.serverTimestamp,
 }
