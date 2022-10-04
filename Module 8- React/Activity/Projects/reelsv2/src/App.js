@@ -6,6 +6,10 @@ import Profile from "./components/Profile"
 import PageNotFound from './components/PageNotFound';
 import Home from './components/Home';
 
+import './Style/signup.css'
+import './Style/login.css'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 function App() {
   return (
     <div className="App">

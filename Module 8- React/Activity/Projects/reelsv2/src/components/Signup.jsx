@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { isLoaded } from "react-redux-firebase";
 
+import TextField from '@mui/material/TextField';
+import insta from '../assets/insta.jpg'
+import Button from '@mui/material/Button';
 
 function Signup(props) {
   
@@ -53,6 +56,34 @@ function Signup(props) {
        isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined ? <Redirect to="/"></Redirect> :
        <>
        <div>Signup Page </div>
+       <div className="signup-container">
+          <div className="signup-card">
+           <img src={insta} alt="" />
+          <TextField id="outlined-basic" fullWidth margin="dense" label="Email" variant="outlined" />
+          <TextField id="outlined-basic" fullWidth margin="dense" label="Password" variant="outlined" />
+          <TextField id="outlined-basic" fullWidth margin="dense" label="Full Name" variant="outlined" />
+          <Button variant="outlined" fullWidth component="label"  style={{marginTop:'0.5rem'}}>
+            Upload
+            <input hidden accept="image/*" multiple type="file" />
+         </Button>
+         <Button variant="contained" fullWidth component="span" style={{marginTop:'0.5rem'}}>
+            Sign Up
+         </Button>
+          </div>
+          <div className="bottom-card">
+            Already Have an Account ? <span style={{color:'blue'}}>Login</span> 
+          </div>
+       </div>
+       
+       
+       
+       
+       
+       
+       <br />
+
+
+       
        <input
          type="email"
          placeholder="Enter Email"
