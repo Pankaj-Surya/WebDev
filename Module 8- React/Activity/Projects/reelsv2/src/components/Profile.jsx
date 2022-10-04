@@ -15,10 +15,12 @@ function Profile(props) {
     async function fn(){
         console.log(props.firebase.auth);
         if(isLoaded(props.firebase.auth)){
+          console.log(props.firebase.auth.uid)
          let docSnap =await firestore.collection("users").doc(props.firebase.auth.uid).get();
          let userData = await docSnap.data();
-         console.log("userDSta ",userData);
+         console.log("userData ",userData);
          setEmail(userData.email);
+         console.log("email profile",email);
          setName(userData.name);
          setUrl(userData.profileImageLink);
         } else{

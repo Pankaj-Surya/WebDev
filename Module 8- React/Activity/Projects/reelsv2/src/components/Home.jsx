@@ -14,12 +14,12 @@ function Home(props) {
         <>
         <h1>Home Page</h1>
         <Header ></Header>
-        <UploadVideo userId={props.firebase.auth.uid}></UploadVideo> 
+        <UploadVideo ></UploadVideo> 
         {
           console.log(props.firebase.auth.uid)
         }
         
-        <Feed></Feed>
+        <Feed ></Feed>
         </>   
   
     }

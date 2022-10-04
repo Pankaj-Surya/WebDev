@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { database, storage } from '../firebase';
+import { connect } from "react-redux";
 
 
 function UploadVideo(props) {
@@ -26,7 +27,7 @@ function UploadVideo(props) {
             }
             function errorCb(err) {
                 console.log(err.message);
-                console.log(err.payload);
+                //console.log(err.payload);
             }
             async function successCb() {
                 // image upload -> complete
@@ -35,9 +36,9 @@ function UploadVideo(props) {
                 const reelVideoUrl = await uploadtask.snapshot.ref.getDownloadURL()
                 console.log("reel URL",reelVideoUrl);
                     // firebaseReducer -> home -> upload Video
-                const userResp = await  database.users.doc(props.userId).get();
+                const userResp = await  database.users.doc(`${props.firebase.auth.uid}`).get();
 
-                console.log("USER ID",props.userId)
+                console.log("USER ID",props.firebase.auth.uid)
                     
                 const userDoc = userResp.data();
                 console.log("userDoc",userDoc)
@@ -75,5 +76,14 @@ function UploadVideo(props) {
   
 }
 
-export default UploadVideo
+
+
+function mapStateToProps(store){
+    return {
+        auth : store.auth,
+        firebase : store.firebase
+    }
+}
+
+export default connect(mapStateToProps)(UploadVideo)
 
