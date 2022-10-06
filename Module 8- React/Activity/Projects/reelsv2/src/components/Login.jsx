@@ -41,7 +41,7 @@ function Login(props) {
     <>
       {isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined ? <Redirect to="/"></Redirect> :
         <>
-          <h1>Login</h1>
+        
 
           <div className="login-container">
             {/*1.Left Carosoul Img */}
@@ -66,15 +66,20 @@ function Login(props) {
             <div>
               <div className="login-card">
                 <img src={insta} alt="" />
-                <TextField id="outlined-basic" fullWidth margin="dense" label="Email" variant="outlined" />
-                <TextField id="outlined-basic" fullWidth margin="dense" label="Password" variant="outlined" />
+                <TextField id="outlined-basic" fullWidth margin="dense" label="Email" variant="outlined"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value) }} />
+                <TextField id="outlined-basic" fullWidth margin="dense" label="Password" variant="outlined"
+                 value={password}
+                 onChange={(e) => { setPassword(e.target.value) }} />
 
-                <Button variant="contained" fullWidth component="span" style={{ marginTop: '1.5rem' }}>
+                <Button variant="contained" fullWidth component="span" style={{ marginTop: '1.5rem' }}
+                   onClick={loginHandler}>
                   Log in
                 </Button>
               </div>
               <div className="bottom-card">
-              Don&apos;t Have an Account? <Link  href="/signup" style={{textDecoration:'none'}}><span style={{ color: 'blue' }}>Sign Up</span></Link>
+              Don&apos;t Have an Account? <Link  to="/signup" style={{textDecoration:'none'}}><span style={{ color: 'blue' }}>Sign Up</span></Link>
               </div>
             </div>
 
@@ -86,7 +91,7 @@ function Login(props) {
 
 
 
-          <br />
+          {/* <br />
 
           <input type="text" placeholder="email"
             value={email}
@@ -99,7 +104,7 @@ function Login(props) {
           ></input>
           <button
             onClick={loginHandler}
-          >Login</button>
+          >Login</button> */}
         </>
 
       }

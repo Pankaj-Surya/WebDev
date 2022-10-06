@@ -2,6 +2,7 @@ import React,{useState,sueEffect} from 'react'
 import { useEffect } from 'react'
 import { database } from '../firebase'
 
+
 function Feed() {
   let [post,setPost] = useState([])
 
@@ -18,8 +19,8 @@ function Feed() {
   },[])
 
   return (
-    <>
-        <div>Feed</div>
+    <div >
+      
         {
           post.map((post,idx)=>{
               return (
@@ -33,7 +34,7 @@ function Feed() {
               )
           })
         }
-    </>
+    </div>
 
   )
 }

@@ -9,11 +9,11 @@ import Home from './components/Home';
 import './Style/signup.css'
 import './Style/login.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import './Style/feed.css'
 
 function App() {
   return (
     <div className="App">
-      <h1>Reels</h1>
       <Switch>
           <Route path="/login">
             <Login></Login>

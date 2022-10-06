@@ -15,7 +15,7 @@
             </Carousel>
         </div>
     </div>
-    
+
     <div>
         <div className='login-card'>
             <Image src={insta} />
@@ -40,5 +40,5 @@
         <div className='bottom-card'>
             Don&apos;t Have an Account? <Link href="/signup"><span style={{ color: 'blue' }}>Sign Up</span></Link>
         </div>
-    </div>
+    </div>89
 </div>

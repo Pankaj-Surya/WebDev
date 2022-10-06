@@ -4,6 +4,7 @@ import { signUpMiddleWare } from "../redux/authMiddleware";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { isLoaded } from "react-redux-firebase";
+import { Link } from "react-router-dom";
 
 import TextField from '@mui/material/TextField';
 import insta from '../assets/insta.jpg'
@@ -55,69 +56,43 @@ function Signup(props) {
     {
        isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined ? <Redirect to="/"></Redirect> :
        <>
-       <div>Signup Page </div>
        <div className="signup-container">
           <div className="signup-card">
            <img src={insta} alt="" />
-          <TextField id="outlined-basic" fullWidth margin="dense" label="Email" variant="outlined" />
-          <TextField id="outlined-basic" fullWidth margin="dense" label="Password" variant="outlined" />
-          <TextField id="outlined-basic" fullWidth margin="dense" label="Full Name" variant="outlined" />
+          <TextField id="outlined-basic" fullWidth margin="dense" label="Email" variant="outlined" 
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}/>
+          <TextField id="outlined-basic" fullWidth margin="dense" label="Password" variant="outlined"
+               value={password}
+               onChange={(e) => {
+                 setPassword(e.target.value);
+               }} />
+          <TextField id="outlined-basic" fullWidth margin="dense" label="Full Name" variant="outlined"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }} />
           <Button variant="outlined" fullWidth component="label"  style={{marginTop:'0.5rem'}}>
             Upload
-            <input hidden accept="image/*" multiple type="file" />
+            <input hidden accept="image/*" multiple type="file" 
+             onChange={(e) => {
+              setFilePath(e.target.files[0]);
+              // console.log(e.target.files)f
+            }}/>
          </Button>
-         <Button variant="contained" fullWidth component="span" style={{marginTop:'0.5rem'}}>
+         <Button variant="contained" fullWidth component="span" style={{marginTop:'0.5rem'}}
+         onClick={signupHandler}>
             Sign Up
          </Button>
           </div>
           <div className="bottom-card">
-            Already Have an Account ? <span style={{color:'blue'}}>Login</span> 
+            Already Have an Account ? <Link  to="/login" style={{textDecoration:'none'}}><span style={{ color: 'blue' }}>Log in</span></Link>
           </div>
        </div>
        
-       
-       
-       
-       
-       
-       <br />
 
-
-       
-       <input
-         type="email"
-         placeholder="Enter Email"
-         value={email}
-         onChange={(e) => {
-           setEmail(e.target.value);
-         }}
-       ></input>
-       <br></br>
-       <input
-         type="password"
-         placeholder="Enter Password"
-         value={password}
-         onChange={(e) => {
-           setPassword(e.target.value);
-         }}
-       ></input>
-       <br></br>
-       <input
-         type="text"
-         placeholder="Full Name"
-         value={name}
-         onChange={(e) => {
-           setName(e.target.value);
-         }}
-       />
-       <br></br>
-        {/* uncontrolled input -> input type file   */}
-       <input type="File" onChange={(e) => {
-         setFilePath(e.target.files[0]);
-         // console.log(e.target.files)f
-       }}></input>
-       <br></br>
-       <button onClick={signupHandler}>Signup</button>
      </> 
     }
     </>

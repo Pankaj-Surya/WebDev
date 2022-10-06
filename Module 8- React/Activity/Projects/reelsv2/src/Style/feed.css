@@ -1,0 +1,36 @@
+
+.feed-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.navbar{
+
+}
+
+.nav-icons{
+margin: 0.5rem;
+color: black;
+}
+
+.nav-icons-container{
+   
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    /*  */
+    margin-left: 70rem
+}
+
+.upload-btn{
+    width: 15rem;
+}
+
+@media only screen and (max-width:500px){
+    .nav-icons{
+        display:none;
+    }
+}

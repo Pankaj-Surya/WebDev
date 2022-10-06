@@ -35,7 +35,7 @@ function Profile(props) {
         isLoaded(props.firebase.auth) && props.firebase.auth?.uid == undefined ?
         <Redirect to="/login"></Redirect> :
         <>
-         <h1>Profile Page</h1>
+        
          <div>Email : {email} </div>
          <img  style={{
           borderColor: "red",

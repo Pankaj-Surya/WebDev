@@ -13,9 +13,8 @@ async function logoutHandler(){
 function Header() {
   return (
     <>
-       <div>Header</div>
-       <Link to='/profile'>Profile</Link>
-       <button onClick={logoutHandler}>LogOut</button>
+       {/* <Link to='/profile'>Profile</Link>
+       <button onClick={logoutHandler}>LogOut</button> */}
 
     </>
  

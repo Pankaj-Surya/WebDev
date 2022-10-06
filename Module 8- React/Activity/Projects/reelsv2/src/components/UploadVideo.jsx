@@ -3,6 +3,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { database, storage } from '../firebase';
 import { connect } from "react-redux";
 
+import Button from '@mui/material/Button';
+import MovieIcon from '@mui/icons-material/Movie';
+
 
 function UploadVideo(props) {
     const [filePath, setFilePath] = useState("")
@@ -65,12 +68,22 @@ function UploadVideo(props) {
     }
 
     return (
-    <div>
-        <h3>UploadVideo</h3>
-        <input type="File" onChange={(e) => {
+    <div className='upload-btn'>
+
+          <Button  variant="outlined" startIcon={<MovieIcon />} fullWidth  component="label"  style={{marginTop:'0.5rem'}}
+            onClick={UploadVideoHandler}>
+            Upload
+            <input hidden accept="image/*" multiple type="file" 
+             onChange={(e) => {
+              setFilePath(e.target.files[0]);
+              // console.log(e.target.files)f
+            }}/>
+         </Button>
+
+        {/* <input type="File" onChange={(e) => {
          setFilePath(e.target.files[0]);
        }}></input>
-       <button onClick={UploadVideoHandler}>Upload</button>
+       <button onClick={UploadVideoHandler}>Upload</button> */}
     </div>
   )
   
