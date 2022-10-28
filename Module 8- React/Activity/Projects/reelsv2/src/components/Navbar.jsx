@@ -11,12 +11,15 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
-import Insta from "../assets/insta.jpg"
+import Insta from '../assets/insta.jpg'
+import '../Style/feed.css'
+
 const settings = ['Profile',  'Logout'];
 
-const ResponsiveAppBar = () => {
+function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -36,41 +39,44 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static" className="navbar" fullWidth style={{ backgroundColor: "white" }} >
+    <AppBar position="static" className="navbar" >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-         
-        <Typography
+          <img src={Insta} height={55} width={200} alt="" />
+          <Typography
             variant="h6"
             noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'flex', md: 'flex' } }}
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
           >
-            <img src={Insta} height={55} width={200} />
-          </Typography>
+           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-          
+            
           </Box>
           
-          
+        
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+           
+          </Box>
 
           <Box sx={{ flexGrow: 0 }} className="nav-icons-container">
-            <HomeIcon fontSize="large" className="nav-icons" />
-            <ExploreIcon fontSize="large" className="nav-icons" />
+           
+            <HomeIcon fontSize='large' className='nav-icons' ></HomeIcon>
+            <ExploreIcon fontSize='large' className='nav-icons'></ExploreIcon>
+           
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"  sx={{ margin : "0.5rem" }} />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} >
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" sx={{margin:"0.5rem"}} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -100,5 +106,5 @@ const ResponsiveAppBar = () => {
       </Container>
     </AppBar>
   );
-};
+}
 export default ResponsiveAppBar;

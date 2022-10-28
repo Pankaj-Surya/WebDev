@@ -9,6 +9,7 @@ import Feed from './Feed';
 import ResponsiveAppBar from './Navbar';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import '../Style/feed.css';
 
 function Home(props) {
  
@@ -32,10 +33,10 @@ function Home(props) {
 
 
   return (
-      <>
+      <div className="feed-container">
       {
         isLoaded(props.firebase.auth) && props.firebase.auth?.uid == undefined ? <Redirect to="/login"></Redirect> :
-        <div className='feed-container'>
+        < >
        
         
         <ResponsiveAppBar></ResponsiveAppBar>
@@ -51,10 +52,10 @@ function Home(props) {
         }
         
         <Feed ></Feed>
-        </div>   
+        </>   
   
     }
-      </>
+      </div>
   )
 }
 

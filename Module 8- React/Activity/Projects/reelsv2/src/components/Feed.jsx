@@ -1,7 +1,8 @@
 import React,{useState,sueEffect} from 'react'
 import { useEffect } from 'react'
 import { database } from '../firebase'
-
+import Avatar from '@mui/material/Avatar';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Feed() {
   let [post,setPost] = useState([])
@@ -19,22 +20,61 @@ function Feed() {
   },[])
 
   return (
-    <div >
-      
-        {
-          post.map((post,idx)=>{
-              return (
-                <div key={idx}> 
-                  <video src={post.postReelVideoUrl}
-                   autoPlay={true} 
-                   muted></video>
-                  <div>{post.userName}</div>
-                  <img src={post.userImg} style={{ height: "40px" }} />
-                </div>
-              )
-          })
-        }
+   <>
+   {
+    post.map((post,idx)=>{
+     return(
+      <div key={idx} className="post-container">
+      <video src={post.postReelVideoUrl} />
+      <div className="videos-info">
+          <div className="avatar_container">
+              <Avatar alt="Remy Sharp" src={post.userImg} sx={{ margin: "0.5rem" }} />
+              <p style={{ color: "white", fontWeight: "bold" }}>{post.userName}</p>
+          </div>
+  
+          <div className="post-like">
+              <FavoriteIcon fontSize="large" style={ { color: "red" } }  />
+              
+          </div>
+      </div>
     </div>
+     )
+    }
+    ) 
+}
+   </>
+
+  //   <div className="post-container">
+  //   <video src={post.postReelVideoUrl} />
+  //   <div className="videos-info">
+  //       <div className="avatar_container">
+  //           <Avatar alt="Remy Sharp" src={post.userImg} sx={{ margin: "0.5rem" }} />
+  //           <p style={{ color: "white", fontWeight: "bold" }}>{post.userName}</p>
+  //       </div>
+
+  //       <div className="post-like">
+  //           <FavoriteIcon fontSize="large" style={ { color: "red" } }  />
+            
+  //       </div>
+  //   </div>
+  // </div>
+
+    //    <div className='videos-container'>
+         
+    //     {
+    //       post.map((post,idx)=>{
+    //           return (
+    //             <div key={idx} className='post-container'> 
+    //               <video src={post.postReelVideoUrl}
+    //                autoPlay={true} 
+    //                muted></video>
+    //               <div>{post.userName}</div>
+    //               <img src={post.userImg} style={{ height: "40px" }} />
+    //             </div>
+    //           )
+    //       })
+    //     }
+    // </div>
 
   )
 }
