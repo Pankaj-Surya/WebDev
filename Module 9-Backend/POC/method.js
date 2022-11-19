@@ -34,6 +34,7 @@ app.patch('/user', (req, res) => {
     })
 });
 
+
 app.delete('/user', (req, res) => {
     user = {};
     res.json({
@@ -41,8 +42,42 @@ app.delete('/user', (req, res) => {
     });
 })
 
+// params
+app.get("/user/:id", (req, res) => {
+    console.log("params passed");
+   res.send("user id is",req.params.id);
+   res.json({
+    mxg : "user id been passed as params",
+   })
+})
 
 
+// params - post
+app.post("/user/:id", (req, res) => {
+    //res.send("user id is",req.params.id);
+    console.log(req.params);
+    res.json({
+        msg : "user id been passed as params",
+        userid : req.params.id 
+    })
+ })
 
+
+//query 
+app.get("/user", (req, res) =>{
+    console.log(req.query)
+    res.send(user)
+})
+
+
+app.post("/user", (req, res) => {
+    //res.send("user id is",req.params.id);
+    console.log(req.params);
+    res.json({
+        msg : "user query passed ",
+        name : req.query.name,
+        phone:req.query.phone
+    })
+ })
 
 app.listen(5000);
