@@ -25,7 +25,7 @@ function Feed() {
     post.map((post,idx)=>{
      return(
       <div key={idx} className="post-container">
-      <video src={post.postReelVideoUrl} />
+      <video controls autoplay src={post.postReelVideoUrl} />
       <div className="videos-info">
           <div className="avatar_container">
               <Avatar alt="Remy Sharp" src={post.userImg} sx={{ margin: "0.5rem" }} />

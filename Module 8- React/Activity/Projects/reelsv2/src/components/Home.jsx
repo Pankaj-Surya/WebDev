@@ -44,8 +44,8 @@ function Home(props) {
         <UploadVideo ></UploadVideo> 
         
         <Box sx={{ width: '15rem',marginTop:'0.2rem',marginBottom:'0.5rem' }}>
-      <LinearProgress variant="determinate" value={progress} />
-    
+      {/* <LinearProgress variant="determinate" value={progress} />
+     */}
       </Box>
         {
           console.log(props.firebase.auth.uid)

@@ -10,14 +10,24 @@ import MovieIcon from '@mui/icons-material/Movie';
 function UploadVideo(props) {
     const [filePath, setFilePath] = useState("")
 
-    function UploadVideoHandler(){
-        console.log("USER ID",props.userId)
+    function UploadVideoHandler() {
+        console.log("USER ID", props.userId)
         try {
             // unique -> uuid4 -> unique id 
             const postId = uuidv4().toString();
             console.log("PostID", postId);
-            const uploadtask =
-                storage.ref(`/posts/${postId}`).put(filePath);
+            // Create file metadata including the content type
+           
+            // Upload the file and metadata
+            const uploadtask = storage.ref(`/posts/${postId}`).put(filePath);
+            
+           
+
+            // stackoverflow -> solution
+            // var metadata = {
+            //     contentType: 'video/mp4'
+            // }
+            // const uploadtask = storage.ref().child(`/posts/${postId}`).put(filePath,metadata);
             uploadtask.on("state_changed",
                 progressCb,
                 errorCb,
@@ -37,14 +47,14 @@ function UploadVideo(props) {
                 // img url
                 console.log("success cb start")
                 const reelVideoUrl = await uploadtask.snapshot.ref.getDownloadURL()
-                console.log("reel URL",reelVideoUrl);
-                    // firebaseReducer -> home -> upload Video
-                const userResp = await  database.users.doc(`${props.firebase.auth.uid}`).get();
+                console.log("reel URL", reelVideoUrl);
+                // firebaseReducer -> home -> upload Video
+                const userResp = await database.users.doc(`${props.firebase.auth.uid}`).get();
 
-                console.log("USER ID",props.firebase.auth.uid)
-                    
+                console.log("USER ID", props.firebase.auth.uid)
+
                 const userDoc = userResp.data();
-                console.log("userDoc",userDoc)
+                console.log("userDoc", userDoc)
                 // profileImageLink
                 // name
                 let postObj = {
@@ -63,38 +73,38 @@ function UploadVideo(props) {
         } catch (err) {
             console.log(err.message)
         }
-        
-       
+
+
     }
 
     return (
-    <div className='upload-btn'>
+        <div className='upload-btn'>
 
-          <Button  variant="outlined" startIcon={<MovieIcon />} fullWidth  component="label"  style={{marginTop:'0.5rem'}}
-            onClick={UploadVideoHandler}>
-            Upload
-            <input hidden accept="image/*" multiple type="file" 
-             onChange={(e) => {
-              setFilePath(e.target.files[0]);
-              // console.log(e.target.files)f
-            }}/>
-         </Button>
+            <Button variant="outlined" startIcon={<MovieIcon />} fullWidth component="label" style={{ marginTop: '0.5rem' }}
+                onClick={UploadVideoHandler}>
+                Upload
+                <input hidden accept="video/*" style={{ display: 'none' }} type="file"
+                    onChange={(e) => {
+                        setFilePath(e.target.files[0]);
+                        // console.log(e.target.files)f
+                    }} />
+            </Button>
 
-        {/* <input type="File" onChange={(e) => {
+            {/* <input type="File" onChange={(e) => {
          setFilePath(e.target.files[0]);
        }}></input>
        <button onClick={UploadVideoHandler}>Upload</button> */}
-    </div>
-  )
-  
+        </div>
+    )
+
 }
 
 
 
-function mapStateToProps(store){
+function mapStateToProps(store) {
     return {
-        auth : store.auth,
-        firebase : store.firebase
+        auth: store.auth,
+        firebase: store.firebase
     }
 }
 
