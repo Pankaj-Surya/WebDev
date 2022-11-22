@@ -78,7 +78,11 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }} className="nav-icons-container">
 
-            <HomeIcon fontSize='large' className='nav-icons' ></HomeIcon>
+            <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+              <HomeIcon fontSize='large' className='nav-icons' >
+              </HomeIcon>
+            </Link>
+
             <ExploreIcon fontSize='large' className='nav-icons'></ExploreIcon>
 
             <Tooltip title="Open settings">
@@ -104,7 +108,7 @@ function ResponsiveAppBar() {
             >
 
               <MenuItem onClick={handleCloseUserMenu}>
-                <Link to="/profile" style={{ textDecoration: 'none', color:'black' }}>
+                <Link to="/profile" style={{ textDecoration: 'none', color: 'black' }}>
                   <Typography textAlign="center">Profile</Typography>
                 </Link>
               </MenuItem>

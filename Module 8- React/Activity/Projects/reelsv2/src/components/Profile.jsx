@@ -4,12 +4,23 @@ import { Redirect } from "react-router-dom";
 import { isLoaded } from 'react-redux-firebase';
 import { auth } from '../firebase';
 import {firestore} from '../firebase';
+import { database } from '../firebase';
+import ResponsiveAppBar from './Navbar';
+
+import '../Style/profile.css'
+
+
+
 
 function Profile(props) {
   
   const [name ,setName]= React.useState("");
   const [email ,setEmail]= React.useState("");
   const [url ,setUrl]= React.useState("");
+
+  const [post,setPost] = React.useState([])
+  
+  
 
   React.useEffect(()=>{
     async function fn(){
@@ -20,31 +31,90 @@ function Profile(props) {
          let userData = await docSnap.data();
          console.log("userData ",userData);
          setEmail(userData.email);
-         console.log("email profile",email);
          setName(userData.name);
          setUrl(userData.profileImageLink);
+    
+        // let listOfPost = await snapShot.docs.map(doc=>doc.data());
+        // setPost(listOfPost) 
+        // console.log(listOfPost);
+        // console.log("profile post videos end")
         } else{
           return ;
         } 
     } fn()
   },[props.firebase.auth])
 
+  React.useEffect(()=>{
+    async function fn1(){
+        console.log(props.firebase.auth);
+        if(isLoaded(props.firebase.auth)){
+        // profile post videos
+        console.log("profile post videos start")
+        const snapShot = await database.posts.where("userName", "==", name).get()
+      
+        //console.log(snapShot.docs.length);
+        const parr=[];
+        
+        if (snapShot.docs.length > 0) {
+          snapShot.docs.forEach(doc => {
+              // doc is a DocumentSnapshot with actual data
+              const data = doc.data();
+               parr.push(data)
+              //console.log("snapShot data",data)
+          })
+        }
+
+       console.log("parr",parr)
+       await setPost(parr)
+       console.log("post",post)
+        
+        // let listOfPost = await snapShot.docs.map(doc=>doc.data());
+        // setPost(listOfPost) 
+        // console.log(listOfPost);
+        // console.log("profile post videos end")
+        } else{
+          return ;
+        } 
+    } fn1()
+  },[post])
+
+
+
+  
+
   return (
       <>
+      <ResponsiveAppBar></ResponsiveAppBar>
       {
         isLoaded(props.firebase.auth) && props.firebase.auth?.uid == undefined ?
         <Redirect to="/login"></Redirect> :
         <>
-        
-         <div>Email : {email} </div>
-         <img  style={{
-          borderColor: "red",
-          borderWidth: 5,
-          borderRadius: 90,
-          height: 100,
-          width: 200
-        }} src={url} alt="img" />
-         <div>Name : {name}</div>
+         <div>
+                <div className='profile_upper'>
+                <img style={{height:"8rem",width:"8rem",borderRadius:"50%"}}
+                 src={url} alt="img" />    
+                 <div style={{flexBasis:"40%"}}>
+                        <h1>{name}</h1>
+                        <h2>{email}</h2>
+                        {
+                          post.length > 0 ?  <h3>Posts : {post.length}</h3> : <h3>Posts </h3>
+                        }
+                       
+                  </div>
+               
+               <hr />
+
+               <div className='profile_videos'>
+                    {
+                        post.map((p,idx)=>(
+                            <video key={idx} src={p.postReelVideoUrl}/>
+                        ))
+                    }
+                </div>
+
+                </div>
+          </div>
+                  
         </>
       }
       </>

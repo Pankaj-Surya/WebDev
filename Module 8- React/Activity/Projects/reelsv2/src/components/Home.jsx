@@ -36,9 +36,7 @@ function Home(props) {
       <div className="feed-container">
       {
         isLoaded(props.firebase.auth) && props.firebase.auth?.uid == undefined ? <Redirect to="/login"></Redirect> :
-        < >
-       
-        
+        < > 
         <ResponsiveAppBar></ResponsiveAppBar>
         <Header ></Header>
         <UploadVideo ></UploadVideo> 

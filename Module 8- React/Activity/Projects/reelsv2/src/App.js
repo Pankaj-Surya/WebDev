@@ -5,6 +5,7 @@ import Signup from './components/Signup';
 import Profile from "./components/Profile"
 import PageNotFound from './components/PageNotFound';
 import Home from './components/Home';
+import Forgot from './components/Forgot';
 
 import './Style/signup.css'
 import './Style/login.css'
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <Signup></Signup>
+          </Route>
+          <Route path="/forgot">
+            <Forgot></Forgot>
           </Route>
           <Route path="/profile">
             <Profile></Profile>
