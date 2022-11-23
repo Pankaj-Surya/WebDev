@@ -39,3 +39,12 @@ insta/user/:pankaj
 
 # Queries     :  
 /product/electronic/? phone=iphone & space=256GB
+
+
+17/11/2022
+===============================
+1.Mountings : miniApp.js
+2.Middleware : middleware.js
+3.Mongodb : setup in foodApp
+
+Mongodb return BSON(binary secured obj notation)
