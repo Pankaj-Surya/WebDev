@@ -14,6 +14,7 @@ const server = http.createServer((req, res) => {
     // res.write("<h2>I am ready for you</h2>");
     // res.end("<h3>Testing res.end</h3>");
     //using lodash
+
     let greet = _.once(() => {
         console.log("How are you?");
     });
@@ -31,7 +32,7 @@ const server = http.createServer((req, res) => {
         path += "/about.html";
         res.statusCode = 200;
         break;
-        case "/aboutus":
+      case "/aboutus":
             res.statusCode = 301;
             res.setHeader('Location','/about')
             res.end();
@@ -40,7 +41,9 @@ const server = http.createServer((req, res) => {
         path += "/404.html";
         res.statusCode = 404;
         break;
+    
     }
+
 
     fs.readFile(path, (err, file) => {
         if (err) {
