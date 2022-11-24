@@ -3,7 +3,8 @@ const path = require('path');
 
 const app = express();
 const mongoose = require('mongoose');
-const {db_link} = require("./secret")
+const {db_link} = require("./secret");
+
 
 //console.log(db_link)
 
@@ -43,7 +44,7 @@ app.use('/auth',authReducer)
 userRouter
 .route('/')
  // midleware route
-.get(middleware1,getUser,middleware2)
+.get(getUser)
 .post(postUser)
 .patch(updateUser)
 .delete(deleteUser)
@@ -62,10 +63,15 @@ function middleware1(req,res,next){
     next();
 }
 
-function getUser(req,res,next){
-        //res.send(user);
-        console.log("getUser()")
-        next();
+// 2. read
+async function getUser(req,res,next){
+//res.send(user);
+// console.log("getUser()")
+//next();
+let allUsers = await userModel.find()
+let oneUser =  await userModel.findOne({name : 'Pankaj'})
+res.json({message : "list of user",
+data : oneUser})
 }
 
 // note after res.send() if we code anything that will work in console
@@ -81,6 +87,7 @@ function middleware2(req,res,next){
     })
     console.log("after res sent")
 }
+
 
 function postUser(req, res)  {
     console.log(req.body.Name);
@@ -153,15 +160,12 @@ function getSignup(req, res) {
 }
 
 function postSignup(req, res) {
-    let { email, name, password } = req.body;
+    let userObj = req.body;
     // server console
     console.log(req.body);
     res.json({
         msg: "user signed up",
-        data : req.body,
-        email ,
-        name,
-        password
+        data :  userObj,
     })
 }
 
@@ -175,3 +179,93 @@ mongoose.connect(db_link)
   .catch(function(err){
     console.log(err);
   })
+
+
+  // cretated schema
+  const userShema = mongoose.Schema({
+    name :{
+        type : String,
+        required : true
+    },
+    email :{
+        type : String,
+        required : true,
+        unique : true
+    },
+    password :{
+        type : String,
+        required : true,
+        kMaxLength :7
+    },
+    confirmPassword :{
+        type : String,
+        required : true,
+        kMaxLength :7
+    }
+
+  })
+
+  //model 
+  const userModel = mongoose.model("userModel",userShema);
+
+
+// 1. create
+//  (async function createUser(){
+    // let user = {
+    //     name : "Sunny",
+    //     email : "bunny@gmail.com",
+    //     password : "12345678",
+    //     confirmPassword : "12345678",
+    // };
+//     let data = userModel.create(user)
+//     console.log(data);
+//   })();
+
+//  create create  
+async function postSignup(req, res) {
+    let userObj = req.body;
+    let user = await userModel.create(userObj);
+    console.log(req.body);
+    res.json({
+        msg: "user signed up",
+        data :  user,
+    })
+}
+
+
+// 2. read
+async function getUser(req,res,next){
+    //res.send(user);
+    // console.log("getUser()")
+    //next();
+    let allUsers = await userModel.find()
+    let oneUser =  await userModel.findOne({name : 'Pankaj'})
+    res.json({message : "list of user",
+    data : oneUser})
+    }
+
+
+// 3. update/patch
+async function updateUser(req, res) {
+    console.log(req.body);
+    let dataToBeUpdated = req.body;
+    let user = await userModel.findOneAndUpdate({email:'sachin@gmail.com'},dataToBeUpdated)
+    // for (key in dataToBeUpdated) {
+    //     user[key] = dataToBeUpdated[key];
+    // }
+    res.json({
+        message: "data updated succesfully",
+        user:req.body
+    })
+}
+
+
+// 4. delete
+async function deleteUser(req, res) {
+    const dataToBeDeleted=req.body;
+    user =await userModel.findOneAndDelete(dataToBeDeleted);
+    res.json({
+        msg: "user has been deleted",
+        data : user
+    });
+}
