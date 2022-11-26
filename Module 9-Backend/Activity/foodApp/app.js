@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const {db_link} = require('./secret')
 const userModel = require('./models/userModel')
 const app = express();
 
@@ -75,24 +75,24 @@ function postUser(req, res)  {
     });
 }
 
-function updateUser(req, res) {
-    console.log(req.body);
-    let dataToBeUpdated = req.body;
-    for (key in dataToBeUpdated) {
-        user[key] = dataToBeUpdated[key];
-    }
-    res.json({
-        message: "data updated succesfully",
-        user:req.body
-    })
-}
+// function updateUser(req, res) {
+//     console.log(req.body);
+//     let dataToBeUpdated = req.body;
+//     for (key in dataToBeUpdated) {
+//         user[key] = dataToBeUpdated[key];
+//     }
+//     res.json({
+//         message: "data updated succesfully",
+//         user:req.body
+//     })
+// }
 
-function deleteUser(req, res) {
-    user = {};
-    res.json({
-        msg: "user has been deleted"
-    });
-}
+// function deleteUser(req, res) {
+//     user = {};
+//     res.json({
+//         msg: "user has been deleted"
+//     });
+// }
 
 function getUserById (req, res)  {
     res.statusCode = 200;
@@ -140,7 +140,7 @@ async function postSignup(req, res) {
     // server console
     console.log(req.body);
     console.log('in postsignup')
-    let user = await userModel.create(data);
+    let user = await userModel.create(userObj);
     res.json({
         msg: "user signed up",
         data :  userObj,
@@ -163,17 +163,18 @@ app.listen(5000);
 //   })();
 
 //  create create  
-async function postSignup(req, res) {
-    let userObj = req.body;
-    let user = await userModel.create(userObj);
-    console.log(req.body);
-    res.json({
-        msg: "user signed up",
-        data :  user,
-    })
-}
+// async function postSignup(req, res) {
+//     let userObj = req.body;
+//     let user = await userModel.create(userObj);
+//     console.log(req.body);
+//     res.json({
+//         msg: "user signed up",
+//         data :  user,
+//     })
+// }
 
 // 2. read
+
 async function getUser(req,res,next){
     //res.send(user);
     // console.log("getUser()")
@@ -208,17 +209,5 @@ async function deleteUser(req, res) {
     });
 }
 
-userSchema.pre("save", function () {
-     console.log("before saving in db");
-    this.confirmPassword = undefined;
-  });
-  
-userSchema.pre('save', async function () {
-      console.log("before saving in db");
-      let salt = await bcrypt.genSalt();
-      console.log("salt",salt);
-      let hashedString = await bcrypt.hash(this.password, salt);
-      this.password = hashedString;
-       console.log("hash string",hashedString);
-})
+
 

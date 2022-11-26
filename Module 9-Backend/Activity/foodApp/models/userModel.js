@@ -1,65 +1,70 @@
 const mongoose = require("mongoose");
-const db_link = require("../secrets");
+const {db_link}  = require("../secret");
 const emailValidator = require("email-validator");
 const bcrypt = require('bcrypt');
-mongoose
-  .connect(db_link)
-  .then(function (db) {
-    console.log("db connected");
-    // console.log(db);
-  })
-  .catch(function (err) {
-    console.log(err);
-  });
+console.log(db_link)
 
-const userSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    validate: function () {
-      return emailValidator.validate(this.email);
-    },
-  },
-  password: {
-    type: String,
-    required: true,
-    minLength: 7,
-  },
-  confirmPassword: {
-    type: String,
-    required: true,
-    minLength: 7,
-    validate: function () {
-      return this.confirmPassword == this.password;
-    },
-  },
-});
-
-//-------------->learning hooks<-----------------
-// userSchema.pre('save', function () {
-//   console.log("before saving in db");
-// })
-
-// userSchema.post("save", function () {
-//   console.log("after saving in db");
+// mongoose.connect(db_link, {useNewUrlParser: true, useUnifiedTopology:true});
+// mongoose.connection.once('open', function(){
+//   console.log('Conection has been made!');
+// }).on('error', function(error){
+//     console.log('Error is: ', error);
 // });
 
+mongoose.connect(db_link)
+  .then(function (db){
+    console.log("db connected");
+    //console.log(db);
+  })
+  .catch(function(err){
+    console.log(err);
+})
+
+
+ // cretated schema
+ const userSchema = mongoose.Schema({
+  name :{
+      type : String,
+      required : true
+  },
+  email :{
+      type : String,
+      required : true,
+      unique : true,
+      validate : function(){
+          return emailValidator.validate(this.email);
+      }
+  },
+  password :{
+      type : String,
+      required : true,
+      kMaxLength :7
+  },
+  confirmPassword :{
+      type : String,
+      required : true,
+      kMaxLength :7,
+      validate : function(){
+          return this.password==this.confirmPassword
+      }
+  }
+
+})
+
+
+//-------------->learning hooks<-----------------
+// always put pre post after schema
 userSchema.pre("save", function () {
-  // console.log("before saving in db");
+  console.log("before saving password in db");
   this.confirmPassword = undefined;
 });
 
-userSchema.pre('save', async function () {
-    let salt = await bcrypt.genSalt();
-    console.log(salt);
-    let hashedString = await bcrypt.hash(this.password, salt);
-    this.password = hashedString;
-    // console.log(hashedString);
+userSchema.pre("save",async function () {
+  console.log("before saving hashing password in db");
+  const salt =await bcrypt.genSalt();
+  const hashedString =await bcrypt.hash(this.password,salt)
+  this.password = hashedString
+  console.log("hashedString",hashedString)
 })
 
 //models
