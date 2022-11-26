@@ -294,16 +294,24 @@ async function updateUser(req, res) {
 
 // 4. delete
 async function deleteUser(req, res) {
-    const dataToBeDeleted=req.body;
+    try {
+     const dataToBeDeleted=req.body;
     //user =await userModel.findOneAndDelete(dataToBeDeleted);
-    user =await userModel.findOne(dataToBeDeleted);
-    console.log("find user",user)
-    let del = await user.remove();
-    console.log("delete user",del)
+    //user =await userModel.findOne(dataToBeDeleted);
+    user =await userModel.deleteMany(dataToBeDeleted);
+    //console.log("find user",user)
+    //let del = await user.remove();
+    //console.log("delete user",del)
     res.json({
         msg: "user has been deleted",
         data : user
     });
+    } catch (error) {
+       console.log(error.message)
+       res.json({
+        msg : error.message
+       }) 
+    }
 }
 
 
