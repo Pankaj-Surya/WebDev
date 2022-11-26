@@ -3,11 +3,14 @@ const path = require('path');
 const {db_link} = require('./secret')
 const userModel = require('./models/userModel')
 const app = express();
-
+const cookieParser = require('cookie-parser');
+const { application } = require('express');
 //console.log(db_link)
 
 //middle ware -> covert frontend req into json
 app.use(express.json());
+
+app.use(cookieParser())
 
 let user = [
     {
@@ -39,6 +42,15 @@ userRouter
 .post(postUser)
 .patch(updateUser)
 .delete(deleteUser)
+
+userRouter
+.route("/getCookies")
+.get(getCookies)
+
+
+userRouter
+.route("/setCookies")
+.get(setCookies)
 
 userRouter
 .route('/:id').get(getUserById)
@@ -209,5 +221,18 @@ async function deleteUser(req, res) {
     });
 }
 
+//document.cookie
+ function setCookies(req,res){
+    //res.setHeader('Set-Cookie','isLoggedIn=true')
+    res.cookie('isLoggedIn',false,{maxAge:1000*60*60*24, secure:true, httpOnly : true});
+    res.cookie('isPrimeMember',true);
+    res.send("cookies has been set ")
+}
+
+function getCookies(req,res){
+    const cookies = req.cookies;
+    console.log("cookies", cookies)
+    res.send("cookies recieved") 
+}
 
 
