@@ -2,6 +2,8 @@ const express = require('express');
 let userRouter = express.Router();
 
 const userModel = require('../models/userModel')
+var jwt = require('jsonwebtoken');
+const JWT_KEY = 'ddhdjjenjcco23fjf'
 
 userRouter
 .route('/')
@@ -168,10 +170,20 @@ async function deleteUser(req, res) {
 
 //let flag = true ; // user logged in or not
 function protectRoute(req,res,next){
-   if(req.cookies.isLoggedIn) {
+   if(req.cookies.login) {
+    //JWT token
+    let token = req.cookies.login;
+    let isVerified = jwt.verify(token,JWT_KEY);
+    if(isVerified){
       next();
+    } 
+    else{
+       return res.json({
+            message : "user not verified"
+        })
+    }
    }else{
-    res.json({
+     return res.json({
         message : "resorce not allowed without login"
     })
    }
