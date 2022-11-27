@@ -1,0 +1,43 @@
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rem;
+    text-align: center;
+}
+
+.login-card{
+    width: 25rem;
+    height : 20rem;
+    border: 1px solid #ccc;
+    padding: 1rem ;
+}
+
+.bottom-card{
+    width: 25rem;
+    height : 5rem;
+    padding: 1rem;
+    border:  1px solid #ccc;;
+    margin-top: 1rem ;
+}
+
+.carbg{
+    background: url('../../assets/carbg.jpg');
+    background-size: cover;
+    height: 590px;
+    width:441px;
+    position: relative;
+    display: flex;
+}
+
+.car{
+    height: 423px;
+    width:241px;
+    position: absolute;
+    top:91px;
+    left:141px;
+    margin: 2px;
+}
+/* @media screen  {
+    
+} */
