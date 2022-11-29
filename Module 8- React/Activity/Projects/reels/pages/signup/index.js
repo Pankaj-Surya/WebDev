@@ -3,6 +3,7 @@ import Image from 'next/image'
 import insta from '../../assets/insta.jpg'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+
 function index() {
     return (
         <div className='signup-container'>
