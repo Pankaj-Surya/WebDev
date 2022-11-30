@@ -3,12 +3,13 @@ import Image from 'next/image'
 import insta from '../../assets/insta.jpg'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Link from 'next/Link'
 
 function index() {
     return (
         <div className='signup-container'>
             <div className='signup-card'>
-                <Image src={insta} ></Image>
+                <Image src={insta} alt='logo'></Image>
                 <TextField id="outlined-basic"  size='small' label="Email" variant="outlined"
                     margin='dense' fullWidth />
                 <TextField id="outlined-basic" size='small' label="Password" type="password" variant="outlined"
@@ -24,7 +25,8 @@ function index() {
                 <Button variant="contained" fullWidth  style = {{marginTop : '0.5rem'}}>SIgn UP</Button>
             </div>
             <div className='bottom-card'>
-              <p>Already Have an Account ? <span style={{color:'blue'}}>Login</span> </p>
+              <p>Already Have an Account ? <span style={{color:'blue'}}>
+              <Link href='/login'>Login</Link></span> </p>
             </div>
         </div>
     )
