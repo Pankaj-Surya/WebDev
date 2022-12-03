@@ -34,6 +34,8 @@ function index() {
     //   setError('')
     // },3000)
   }
+  setEmail("")
+  setPassword("")
   setLoading(false)
 }
 

@@ -3,6 +3,7 @@ import './signup/signup.css'
 import './login/login.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '../styles/feed.css'
+import '.././pages/profile/profile.css'
 import AuthWrapper from '../context/auth';
 
 
