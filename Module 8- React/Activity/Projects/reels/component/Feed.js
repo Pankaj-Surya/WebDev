@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './Navbar'
+
 import Upload from './Upload'
 import Avatar from '@mui/material/Avatar';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -7,8 +7,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 function Feed() {
   return (
     <div className='feed-container'>
-      {/* Navbar */}
-      <Navbar></Navbar>
+    
       {/* Upload */}
       <Upload />
       {/* reels */}
