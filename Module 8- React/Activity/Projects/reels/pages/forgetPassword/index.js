@@ -10,7 +10,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { AuthContext } from '../../context/auth'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-function index() {
+function Index() {
     const router = useRouter(AuthContext)
     const [email, setEmail] = React.useState('')
     const [error, setError] = React.useState('')
@@ -76,11 +76,11 @@ function index() {
                         onClick={handleClick} disabled={loading} >Send Email</Button>
                 </div>
                 <div className='bottom-card'>
-                    <p>Don't Have an Account ? <Link href='/signup' ><span style={{ color: 'blue' }}> SignUp</span></Link> </p>
+                    <p>Don&apos;t Have an Account ? <Link href='/signup' ><span style={{ color: 'blue' }}> SignUp</span></Link> </p>
                 </div>
             </div>
         </div>
     )
 }
 
-export default index
+export default Index

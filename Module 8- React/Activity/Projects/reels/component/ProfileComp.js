@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Navbar from '.././component/Navbar'
 function ProfileComp() {
 
     const [name, setName] = React.useState("");
@@ -9,7 +9,7 @@ function ProfileComp() {
 
     return (
         <div>
-
+            <Navbar></Navbar>
             <div>
                 <div className='profile_upper'>
 

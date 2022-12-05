@@ -10,7 +10,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { AuthContext } from '../../context/auth'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
-function index() {
+function Index() {
    
 
   const router = useRouter(AuthContext)
@@ -87,7 +87,7 @@ useEffect(()=>{
                
             </div>
             <div className='bottom-card'>
-              <p>Don't Have an Account ? <span style={{color:'blue'}}>
+              <p>Don&apos;t Have an Account ? <span style={{color:'blue'}}>
               <Link href='/signup'>SignUp</Link>  </span> </p>
             </div>
             </div>
@@ -95,4 +95,4 @@ useEffect(()=>{
     )
 }
 
-export default index
+export default Index

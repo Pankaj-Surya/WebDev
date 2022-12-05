@@ -10,7 +10,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {storage,db} from '../../firebase'
 import { doc, setDoc } from "firebase/firestore";
 
-function index() {
+function Index() {
     const router = useRouter()
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
@@ -20,7 +20,7 @@ function index() {
     const [loading, setLoading] = React.useState(false)
 
     const { signup, user } = useContext(AuthContext)
-
+    //console.log("uid -->",user.uid);
     async function handleClick() {
         try {
             setLoading(true)
@@ -57,7 +57,8 @@ function index() {
                             name : name,
                             email : email,
                             uid : userInfo.user.uid,
-                            photoURL : downloadURL
+                            photoURL : downloadURL,
+                            posts : []
                         }
                         //set doc
                         await setDoc(doc(db,"users",userInfo.user.uid),obj)
@@ -119,4 +120,4 @@ function index() {
     )
 }
 
-export default index
+export default Index

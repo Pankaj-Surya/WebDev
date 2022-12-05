@@ -1,15 +1,38 @@
-import React from 'react'
+import React,{useEffect, useState,useContext} from 'react'
 
 import Upload from './Upload'
 import Avatar from '@mui/material/Avatar';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { AuthContext } from '.././context/auth';
+import { doc, onSnapshot } from "firebase/firestore";
+import {db } from '.././firebase'
+import Navbar from './Navbar'
 
 function Feed() {
+
+ // get user from context
+ const {  user } = useContext(AuthContext)
+ const [userData,setUserData] = useState({})
+
+// get user from firestore
+useEffect(()=>{
+  //console.log("uid -->",user.uid);
+  const unsub = onSnapshot(doc(db,"users","qtOTNzQJPshDV2gUhulAkte3XFa2"), 
+            (doc) => {
+              console.log(doc.data());
+              setUserData(doc.data())
+            })
+            return () => {
+              unsub();
+            }
+},[user])
+
   return (
     <div className='feed-container'>
-    
+      {/* Navbar */}
+      <Navbar userData={userData} ></Navbar>    
       {/* Upload */}
-      <Upload />
+      <Upload userData={userData} />
       {/* reels */}
       <div className='videos-container'>
            
@@ -26,6 +49,7 @@ function Feed() {
               </div>
               </div>   
           </div>
+
 
           <div className='post-container'>
               <video src=""></video>

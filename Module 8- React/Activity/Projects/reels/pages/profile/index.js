@@ -1,15 +1,29 @@
 import React from 'react'
-import Navbar from '../.././component/Navbar'
 import ProfileComp from '../../component/ProfileComp'
+import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import {AuthContext} from '../.././context/auth'
 
-function index() {
+function Index() {
+  const {user} = useContext(AuthContext)
+  
+  const Redirect = () => {
+    const router = useRouter();
+    router.push("/login")
+    return null;
+    }
+
   return (
     <>
-    <Navbar></Navbar>
-    <br />
-    <ProfileComp></ProfileComp>
+   
+   
+     {
+        user?.uid ? <ProfileComp></ProfileComp> : <Redirect></Redirect>
+      }
+     
+   
     </>
   )
 }
 
-export default index
+export default Index;

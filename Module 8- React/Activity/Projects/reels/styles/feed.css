@@ -28,8 +28,12 @@
 
 .upload-btn{
    margin-top: 1rem;
-   width: 15 rem;
+   width: 20rem;
    height: 1ovh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
 }
 
 .videos-container{
