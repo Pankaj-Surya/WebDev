@@ -42,11 +42,20 @@ mongoose.connect(db_link)
   },
   confirmPassword :{
       type : String,
-      required : true,
+      // required : true,
       kMaxLength :7,
       validate : function(){
           return this.password==this.confirmPassword
       }
+  },
+  role : {
+    type : String,
+    enum : ['admin','user','resturantowner','deliveryby'],
+    default:'user'
+  },
+  profileImage : {
+    type : String,
+    default : 'img/users/default.jped'
   }
 
 })

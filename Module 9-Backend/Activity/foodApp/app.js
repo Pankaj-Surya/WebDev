@@ -27,11 +27,11 @@ let user = [
 
 // mini app ->
 let userRouter = require("./Routers/userRouter");
-let authRouter = require("./Routers/authRouter");
+// let authRouter = require("./Routers/authRouter");
 
 // base or router to use
 app.use('/user',userRouter)
-app.use('/auth',authRouter)
+// app.use('/auth',authRouter)
 
 app.listen(5000);
 

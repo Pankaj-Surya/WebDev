@@ -2,7 +2,7 @@
 13/11/2022
 ===============================
 Packages :
-1.Node mon : restart server when changes in code
+1.Nodemon : restart server when changes in code
 2.Loadash  :
 
 Q.npm i locally vs globally installed

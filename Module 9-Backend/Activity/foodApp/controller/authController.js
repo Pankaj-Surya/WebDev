@@ -1,38 +1,41 @@
-const e = require('express');
 const express = require('express');
 
 let authRouter = express.Router();
-const userModel = require('../models/userModel')
+const userModel = require('.././models/userModel')
 var jwt = require('jsonwebtoken');
 const JWT_KEY = 'ddhdjjenjcco23fjf';
 
-authRouter
-    .route("/signup")
-    .get(getSignup)
-    .post(postSignup)
-
-authRouter
-    .route("/login")
-    .post(loginUser)
-
-function getSignup(req, res) {
-    res.sendFile("/public/index.html", { root: __dirname });
-}
-
-async function postSignup(req, res) {
+// signup user
+module.exports.signup = async function (req, res) {
+   try {
     let userObj = req.body;
     // server console
     console.log(req.body);
     console.log('in postsignup')
     let user = await userModel.create(userObj);
-    res.json({
-        msg: "user signed up",
-        data: userObj,
-    })
+    
+    if(user){
+        res.json({
+            msg: "user signed up",
+            data: user,
+        })
+    }else{
+        res.json({
+            msg: "error while siging up",
+           
+        })
+    }
+    
+   } catch (error) {
+     res.json({
+        msg : error.message,
+     })   
+   }
 }
 
 
-async function loginUser(req, res) {
+// login user
+module.exports.login = async function (req, res) {
     try {
         const data = req.body;
         if (data.email) {
@@ -72,4 +75,4 @@ async function loginUser(req, res) {
     }
 
 }
-module.exports = authRouter
+
