@@ -16,6 +16,12 @@ module.exports.protectRoute = async  function (req,res,next){
        next();
      } 
      else{
+      // Tp Display in Browser
+      const client = req.get("User-Agent");
+      if(client.includes("Mozilla")==true){
+        return res.redirect('/login')
+      }   
+        // TO Display in Postman
         return res.json({
             message : "please login again"
          })

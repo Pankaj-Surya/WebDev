@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const {db_link}  = require("../secret");
 const emailValidator = require("email-validator");
 const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
 console.log(db_link)
 
 // mongoose.connect(db_link, {useNewUrlParser: true, useUnifiedTopology:true});
@@ -56,7 +57,8 @@ mongoose.connect(db_link)
   profileImage : {
     type : String,
     default : 'img/users/default.jped'
-  }
+  },
+  resetToken : {type : String}
 
 })
 
@@ -68,6 +70,18 @@ userSchema.pre("save", function () {
   this.confirmPassword = undefined;
 });
 
+userSchema.methods.createResetToken =async function(){
+  const resetToken = uuidv4();
+  this.resetToken = resetToken;
+  await this.save();
+  return resetToken;
+}
+
+userSchema.methods.resetPasswordHandler= function(password,confirmPassword){
+this.password = password,
+this.confirmPassword = confirmPassword,
+this.resetToken = undefined
+}
 
 // userSchema.pre("save",async function () {
 //   console.log("before saving hashing password in db");
