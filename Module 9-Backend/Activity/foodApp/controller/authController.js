@@ -153,3 +153,5 @@ module.exports.logout = function (req,res) {
       msg:'user logged out successfully'
     })
 }
+
+
