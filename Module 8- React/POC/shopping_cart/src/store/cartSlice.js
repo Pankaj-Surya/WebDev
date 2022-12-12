@@ -1,6 +1,6 @@
 const { createSlice } = require('@reduxjs/toolkit');
 
-//const intialState = [];
+//let intialVal = [];
 
 // cartSLice
 // 1.name : cart
@@ -11,21 +11,21 @@ const { createSlice } = require('@reduxjs/toolkit');
 
 const cartSlice = createSlice({
     name: 'cart',
-    intialState:[],
-   
+    initialState: [],
     reducers :{
         add(state,action){
            // old redux - to avoid the sideeffects
            //return [...state, action.payload]
            // directly mutating the state - allowed here
            // abstracting the above one syntax so allowed here
-           console.log(state)
-           console.log(action)
+        //    console.log(state)
+        //    console.log(action)
            state.push(action.payload)
         },
         remove(state,action){
            // direct changes/mutate in the state 
-            state = state.filter((item)=>item.id !== action.payload)
+           //  state = state.filter((item)=>item.id !== action.payload)
+           return state.filter((item)=>item.id !== action.payload)
         }
     }
 })
