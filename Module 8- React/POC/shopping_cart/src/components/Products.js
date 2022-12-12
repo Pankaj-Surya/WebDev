@@ -17,7 +17,7 @@ function Products() {
     <div className='productsWrapper'>
        {
         products.map((product)=>(
-         <div className='card' key ={products.id}>
+         <div className='card' key ={product.id}>
           <img src={product.image} alt="" />
           <h4>{product.title}</h4>
           <h5>{product.price}</h5>
