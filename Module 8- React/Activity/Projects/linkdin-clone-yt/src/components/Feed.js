@@ -19,7 +19,9 @@ function Feed() {
         console.log("feed useeffects start") 
         // collection ref
         const colRef=collection(db,"posts")
+        // queries
         const q = query(colRef,orderBy("timestamp","desc"))
+        // snapshots --> docs 
         const unsub = onSnapshot(q, (snapshot)=>{
             console.log("docs --->", snapshot.docs)
             setPosts(snapshot.docs.map(doc => (
