@@ -9,6 +9,7 @@ import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 import Post from './Post';
 import { db } from '.././firebase';
 import { addDoc, collection, doc, onSnapshot, orderBy, query,serverTimestamp } from "firebase/firestore";
+
 function Feed() {
     const [posts,setPosts] = useState([])
     const [input,setInput]= useState("")
@@ -16,8 +17,10 @@ function Feed() {
     // keep track updated posts 
     useEffect( ()=>{
         console.log("feed useeffects start") 
+        // collection ref
         const colRef=collection(db,"posts")
-        const unsub = onSnapshot(colRef, (snapshot)=>{
+        const q = query(colRef,orderBy("timestamp","desc"))
+        const unsub = onSnapshot(q, (snapshot)=>{
             console.log("docs --->", snapshot.docs)
             setPosts(snapshot.docs.map(doc => (
                 {
