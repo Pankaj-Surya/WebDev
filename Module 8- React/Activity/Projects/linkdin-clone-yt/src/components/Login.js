@@ -18,11 +18,14 @@ function Login() {
   }
   const register =async () => {
     if(!name){
-      alert("Please enter your name")
+      alert("Please enter your name") 
+      return
     }else if(!email){
       alert("Please enter your email")
+      return
     }else if(!password){
       alert("Please enter your password")
+      return
     }else{
       console.log("enter")
       const auth = getAuth();
