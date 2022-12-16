@@ -18,7 +18,7 @@ function Header() {
             {/* icon */}
             <SearchIcon></SearchIcon>         
             {/* Textbox */}
-            <input  type="text" />
+            <input placeholder='Search'  type="text" />
           </div>
        </div>
       <div className="header__right">
