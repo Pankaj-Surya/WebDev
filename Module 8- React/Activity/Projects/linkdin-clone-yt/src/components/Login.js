@@ -1,18 +1,60 @@
 import React, { useState } from 'react'
 import ".././Style/Login.css"
 import loginLogo from ".././assets/loginLogo.png"
-import auth from "../firebase"
+//import auth from "../firebase"
+import {getAuth,createUserWithEmailAndPassword,updateProfile} from 'firebase/auth'
+import { useDispatch } from 'react-redux'
+import {login} from ".././features/userSlice"
 function Login() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, 
+    setPassword] = useState("");
   const [profilePic,setProfilePic] = useState("");
+  const dispatch = useDispatch();
+  
   const loginToApp = (e) => {
     e.preventDefault();
   }
-  const register = () => {
+  const register =async () => {
+    if(!name){
+      alert("Please enter your name")
+    }else if(!email){
+      alert("Please enter your email")
+    }else if(!password){
+      alert("Please enter your password")
+    }else{
+      console.log("enter")
+      const auth = getAuth();
+      // register the user in firebase
+      const userAuth =await createUserWithEmailAndPassword(auth,email,password)
+      const user =await userAuth.user;
+      console.log(" User From Login : ",user)
+      // Update a user's profile
+      // profilePic - copy image address -> Error : too long URL
+      const updateProfileInfo = await updateProfile(auth.currentUser,{
+         displayName : name,
+         photoURL : profilePic
+      })
+      console.log("updatedProfile  : ",updateProfileInfo)
+      dispatch(login({
+        email : userAuth.user.email,
+        uid : userAuth.user.uid,
+        displaName : name,
+        photoURL : profilePic
+      }))
 
+      
+    }
+
+    setName("")
+    setEmail("")
+    setProfilePic("")
+    setPassword("")
+    alert("user Logged In Successfully")
   }
+
+
   return (
     <div className='login'>
       <img src={loginLogo} alt="" />
