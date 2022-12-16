@@ -2,19 +2,33 @@ import React, { useState } from 'react'
 import ".././Style/Login.css"
 import loginLogo from ".././assets/loginLogo.png"
 //import auth from "../firebase"
-import {getAuth,createUserWithEmailAndPassword,updateProfile} from 'firebase/auth'
+import {getAuth,createUserWithEmailAndPassword,updateProfile,signInWithEmailAndPassword} from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import {login} from ".././features/userSlice"
 function Login() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("");
-  const [password, 
-    setPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [profilePic,setProfilePic] = useState("");
   const dispatch = useDispatch();
   
-  const loginToApp = (e) => {
+  const loginToApp =async (e) => {
     e.preventDefault();
+    const auth = getAuth();
+    const userAuth = await signInWithEmailAndPassword(auth, email, password)
+    if(!userAuth){
+     alert("please enter valid credential");
+     setEmail("");
+     setPassword("")
+     return;
+    }
+    dispatch(login({
+      email : userAuth.user.email,
+      uid : userAuth.user.uid,
+      displaName : userAuth.user.displayName,
+      profileUrl : userAuth.user.photoURL
+    }))
+    alert(" Signin Successfully");
   }
   const register =async () => {
     if(!name){
