@@ -18,7 +18,7 @@ function Sidebar() {
             <div className="sidebar__top">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3gOPGsHaE8NwYmcYFPr31RPdwA0_IXxiSdQ&usqp=CAU" alt="background profile" />
                 {/* src={user.photoUrl} */}
-                <Avatar  className='sidebar__avatar' >
+                <Avatar   src={user.photoUrl}  className='sidebar__avatar' >
                     {user.email[0]}
                 </Avatar>
                 <h2>{user.displayName}</h2>

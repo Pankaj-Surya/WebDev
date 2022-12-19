@@ -15,6 +15,17 @@ function Login() {
   const loginToApp =async (e) => {
     e.preventDefault();
     const auth = getAuth();
+    
+    if(!email && !password){
+      alert("Please enter your credential")
+      return
+    }else if(!email){
+      alert("Please enter your email")
+      return
+    }else if(!password){
+      alert("Please enter your password")
+      return
+    } 
     const userAuth = await signInWithEmailAndPassword(auth, email, password)
     if(!userAuth){
      alert("please enter valid credential");

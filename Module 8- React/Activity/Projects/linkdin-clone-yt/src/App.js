@@ -37,12 +37,15 @@ function App() {
   
   return (
     <div className="app">
-      {/* Header */}
-      <Header />
+       
+        {/* Header */}
+        {/* <Header /> */}
 
       {!user ? (<Login />) :
         (
-          <div className="app__body">
+          <>
+           <Header />
+           <div className="app__body">
             {/* Sidebar */}
             <Sidebar />
             {/* Feed */}
@@ -50,6 +53,8 @@ function App() {
             {/* Widgets */}
             <Widgets></Widgets>
           </div>
+          </>
+         
         )
       }
 
