@@ -3,6 +3,7 @@ import { auth } from '.././firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from 'firebase/auth'
 
 export const AuthContext = React.createContext()
+
 function AuthWrapper({ children }) {
 
     const [user, setUser] = React.useState("")
@@ -11,7 +12,8 @@ function AuthWrapper({ children }) {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                setUser(user)
+                console.log("user from auth -> ",user)
+                setUser(user);
             }else{
                 setUser("")
             }
@@ -44,7 +46,7 @@ function AuthWrapper({ children }) {
         user
     }
 
-    console.log("AuthWrapper HEllo");
+    //console.log("AuthWrapper HEllo");
     return (
         <div>
             <AuthContext.Provider value={store}>

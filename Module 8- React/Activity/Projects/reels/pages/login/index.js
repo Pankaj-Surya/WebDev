@@ -30,9 +30,9 @@ function Index() {
   } catch (error) {
     console.log(error.message);
     setError(error.message)
-    // setTimeout(()=>{
-    //   setError('')
-    // },3000)
+    setTimeout(()=>{
+      setError('')
+    },3000)
   }
   setEmail("")
   setPassword("")
@@ -44,6 +44,7 @@ useEffect(()=>{
     router.push("/")
   }else{
     console.log("user not logged in")
+    return
   }
 },[user])
 

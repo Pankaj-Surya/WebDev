@@ -21,8 +21,10 @@ import Link from 'next/link'
 const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar({userData}) {
+  //console.log("Navbar usrdata ->",userData);  
+  const {logout,user} = useContext(AuthContext);
   
-  const {logout} = useContext(AuthContext);
+  console.log("Navbar user",user)
   const  router= useRouter();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -43,9 +45,12 @@ function ResponsiveAppBar({userData}) {
     setAnchorElUser(null);
   };
 
+  
+
   async function handleLogout(){
     await logout();
     router.push("/login")
+    return
   }
 
   return (
@@ -83,8 +88,7 @@ function ResponsiveAppBar({userData}) {
             <ExploreIcon className='nav-icons' fontSize='large'></ExploreIcon>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, m:0.8 }}>
-                <Avatar alt="Remy Sharp" src={
-                  userData?.photoURL} />
+                <Avatar alt="Remy Sharp" src={userData?.photoURL} />
               </IconButton>
             </Tooltip>
             <Menu

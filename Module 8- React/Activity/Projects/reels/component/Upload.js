@@ -91,11 +91,14 @@ function Upload({ userData }) {
           {
             posts : arrayUnion(uid)
           })
+          console.log("doc added")
+          setLoading(false);
+          setProgress(0)
 
         });
       }
     );
-    setLoading(false);
+ 
 
   }
   return (

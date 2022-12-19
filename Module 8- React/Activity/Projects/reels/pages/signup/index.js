@@ -21,6 +21,17 @@ function Index() {
 
     const { signup, user } = useContext(AuthContext)
     //console.log("uid -->",user.uid);
+    
+    // check if the user is already authenticated
+    useEffect(() => {
+        if (user) {
+            router.push("/")
+        } else {
+            console.log("user not logged in")
+        }
+    }, [user])
+
+    // signup data upload to firestore and storage
     async function handleClick() {
         try {
             setLoading(true)
@@ -81,13 +92,7 @@ function Index() {
         setLoading(false)
     }
 
-    // useEffect(() => {
-    //     if (user) {
-    //         router.push("/")
-    //     } else {
-    //         console.log("user not logged in")
-    //     }
-    // }, [user])
+    
 
     return (
         <div className='signup-container'>

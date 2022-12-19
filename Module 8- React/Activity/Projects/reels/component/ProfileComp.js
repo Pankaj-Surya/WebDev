@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { useState,useContext,useEffect } from 'react'
 import Navbar from '.././component/Navbar'
+import { AuthContext } from '../context/auth';
+import { doc, onSnapshot } from "firebase/firestore";
+import {db} from ".././firebase"
 function ProfileComp() {
+    const [userData, setUserData] = useState({});
+    const [posts, setPosts] = useState([]);
+    const { user } = useContext(AuthContext);
 
-    const [name, setName] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [url, setUrl] = React.useState("");
-    const [post, setPost] = React.useState([])
+    useEffect(() => {
+        console.log("user", user);
+        const unsub = onSnapshot(doc(db, "users", user.uid), (doc) => {
+          console.log("doc", doc.data());
+          setUserData(doc.data());
+        });
+        return () => unsub();
+      }, [user]);
 
     return (
         <div>
-            <Navbar></Navbar>
+            <Navbar userData={userData}/>
             <div>
                 <div className='profile_upper'>
 
-
                     <img style={{ height: "8rem", width: "8rem", borderRadius: "50%" }}
-                        src="https://firebasestorage.googleapis.com/v0/b/reels-next-c61db.appspot.com/o/5xoY2tCdmrVn2jTe6o2tT4NZYiB2%2FProfile?alt=media&token=ed05e4ca-8bcf-43aa-a53e-5d2967ae752c" alt="img" />
+                     src={userData.photoURL} alt="img" />
                     <div style={{ flexBasis: "40%" }}>
-                        <h1>name</h1>
-                        <h2>email</h2>
-                        <h3>Posts : {post.length}</h3>
+                        <h3>Name : {userData.name}</h3>
+                        <h3>Email : {userData.email}</h3>
+                        <h3>Posts : {userData.posts?.length}</h3>
 
                     </div>
                 </div>
