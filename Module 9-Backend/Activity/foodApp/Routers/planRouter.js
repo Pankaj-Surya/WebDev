@@ -14,7 +14,7 @@ planRouter
 
 planRouter.use(protectRoute) //logged in hai ya nhi 
 planRouter
-.route('single/:id')
+.route('/single/:id')
 .get(getPlan)
 
 planRouter.use(isAuthorised(['admin', 'restaurantowner'])) // logged in , lekin role 

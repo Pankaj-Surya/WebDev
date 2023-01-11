@@ -53,7 +53,7 @@ formulaBar.addEventListener("keypress", function (e) {
         if (oldFormula != "") {
             removeFormula(dbCell, cCell);
         }
-// add
+       // add
         let ans = evaluate(formula);
         // console.log(ans);
         setCell(ans, rid, cid);
@@ -79,8 +79,6 @@ function removeFormula(dbCell, cCell) {
         }
     }
     dbCell.formula = "";
-
-
 
 }
 

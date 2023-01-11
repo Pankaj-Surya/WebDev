@@ -11,11 +11,12 @@ function Login() {
   const [password, setPassword] = useState("");
   const [profilePic,setProfilePic] = useState("");
   const dispatch = useDispatch();
-  
+ 
   const loginToApp =async (e) => {
     e.preventDefault();
-    const auth = getAuth();
     
+    try {
+    const auth = getAuth();
     if(!email && !password){
       alert("Please enter your credential")
       return
@@ -26,23 +27,29 @@ function Login() {
       alert("Please enter your password")
       return
     } 
-    const userAuth = await signInWithEmailAndPassword(auth, email, password)
-    if(!userAuth){
-     alert("please enter valid credential");
-     setEmail("");
-     setPassword("")
-     return;
-    }
-    dispatch(login({
-      email : userAuth.user.email,
-      uid : userAuth.user.uid,
-      displaName : userAuth.user.displayName,
-      profileUrl : userAuth.user.photoURL
-    }))
-    alert(" Signin Successfully");
+     const userAuth = await signInWithEmailAndPassword(auth, email, password)
+    
+     console.log(userAuth)
+     dispatch(login({
+       email : userAuth.user.email,
+       uid : userAuth.user.uid,
+       displaName : userAuth.user.displayName,
+       profileUrl : userAuth.user.photoURL
+     }))
+     alert(" Signin Successfully");
+     window.location.reload();
+    } catch (error) {
+      console.log("not valid cred")
+      alert("Pleasr enter valid credential");
+    }  
   }
+
   const register =async () => {
-    if(!name){
+   try {
+    if(!name && !password && !email){
+      alert("Field Detail is Mandatory") 
+      return
+    }else if(!name){
       alert("Please enter your name") 
       return
     }else if(!email){
@@ -69,17 +76,19 @@ function Login() {
         email : userAuth.user.email,
         uid : userAuth.user.uid,
         displaName : name,
-        photoURL : profilePic
+        photoURL : profilePic || ""
       }))
-
-      
+      alert("user Logged In Successfully")
     }
+   } catch (error) {
+    console.log("error: ",error.message)
+   }
 
     setName("")
     setEmail("")
     setProfilePic("")
     setPassword("")
-    alert("user Logged In Successfully")
+  
   }
 
 

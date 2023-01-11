@@ -34,7 +34,7 @@ mongoose
             return this.discount < 100;
         },'discount could not be 100%']
      }, 
-     ratingAverage : {
+     ratingsAverage : {
         type: Number,
         // default:0
      }

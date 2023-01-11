@@ -29,13 +29,18 @@ let user = [
 let userRouter = require("./Routers/userRouter");
 // let authRouter = require("./Routers/authRouter");
 let planRouter = require("./Routers/planRouter");
-
+let reviewRouter = require("./Routers/reviewRouter");
 // base or router to use
 app.use('/user',userRouter)
 // app.use('/auth',authRouter)
 
-const planModel = require("./models/planModel")
-// app.use('/plan',planRouter)
+app.use('/plan',planRouter)
+
+app.use('/review',reviewRouter)
+
+//For Testing the model
+//const planModel = require("./models/planModel")
+
 app.listen(5000);
 
 

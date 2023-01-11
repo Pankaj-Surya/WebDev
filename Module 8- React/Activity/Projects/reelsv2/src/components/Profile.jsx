@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useMemo} from 'react'
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { isLoaded } from 'react-redux-firebase';
@@ -10,6 +10,8 @@ import ResponsiveAppBar from './Navbar';
 import '../Style/profile.css'
 
 
+const parr=[];
+
 
 
 function Profile(props) {
@@ -17,10 +19,11 @@ function Profile(props) {
   const [name ,setName]= React.useState("");
   const [email ,setEmail]= React.useState("");
   const [url ,setUrl]= React.useState("");
-
   const [post,setPost] = React.useState([])
   
-  
+  const nPost = useMemo(()=>{
+    return {post}
+  },[post])
 
   React.useEffect(()=>{
     async function fn(){
@@ -46,41 +49,34 @@ function Profile(props) {
 
   React.useEffect(()=>{
     async function fn1(){
-        console.log(props.firebase.auth);
         if(isLoaded(props.firebase.auth)){
         // profile post videos
-        console.log("profile post videos start")
-        const snapShot = await database.posts.where("userName", "==", name).get()
-      
-        //console.log(snapShot.docs.length);
-        const parr=[];
-        
+        // console.log("profile post videos start")
+         const snapShot = await database.posts.where("userName", "==", name).get()
+               
         if (snapShot.docs.length > 0) {
-          snapShot.docs.forEach(doc => {
+          await  snapShot.docs.forEach(doc => {
               // doc is a DocumentSnapshot with actual data
               const data = doc.data();
                parr.push(data)
-              //console.log("snapShot data",data)
           })
         }
-
-       console.log("parr",parr)
+      // console.log("parr",parr)
        await setPost(parr)
-       console.log("post",post)
-        
+  
+      
+       // console.log("post length",post.length);
+       console.log("post -->",post);
         // let listOfPost = await snapShot.docs.map(doc=>doc.data());
         // setPost(listOfPost) 
         // console.log(listOfPost);
-        // console.log("profile post videos end")
+        //console.log("npost",nPost)
+        console.log("profile post videos end")
         } else{
           return ;
         } 
     } fn1()
-  },[post])
-
-
-
-  
+  },[post.length])
 
   return (
       <>
@@ -96,10 +92,8 @@ function Profile(props) {
                  <div style={{flexBasis:"40%"}}>
                         <h1>{name}</h1>
                         <h2>{email}</h2>
-                        {
-                          post.length > 0 ?  <h3>Posts : {post.length}</h3> : <h3>Posts </h3>
-                        }
-                       
+                        <h3>Posts : {post.length}</h3> 
+                        
                   </div>
                
                <hr />

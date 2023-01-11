@@ -17,7 +17,7 @@ function Index() {
     <>
    
    
-     {
+      {
         user?.uid ? <ProfileComp></ProfileComp> : <Redirect></Redirect>
       }
      

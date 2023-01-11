@@ -7,6 +7,28 @@ body {
     margin: 0px;
 }
 
+.page-actions-cont {
+    height: 2.5rem;
+    background-color: #218c74;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 1rem;
+}
+
+.page-action {
+    width: 3.5rem;
+    height: 2rem;
+    text-align: center;
+    color: #f1f2f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selected-page-action {
+    background-color: #f1f2f6;
+    color: #218c74;
+}
+
 /*******************menu bar************/
 .menu_bar {
     border: 1px solid gray;

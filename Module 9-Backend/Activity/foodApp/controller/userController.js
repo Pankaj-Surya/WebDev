@@ -1,5 +1,5 @@
 const userModel = require('../models/userModel')
-
+console.log(userModel)
 module.exports.getUser =async function (req, res, next) {
  try {
     let id = req.id;

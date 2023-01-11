@@ -1,8 +1,10 @@
 import './App.css';
-import UseReducer from './pocs/UseReducer';
-import UseState from './pocs/UseState';
-import UseStateComplex from './pocs/UseStateComplex';
-import List from './pocs/List';
+import Parent from './pocs/useCallback/Parent';
+// import UseReducer from './pocs/UseReducer';
+// import UseState from './pocs/UseState';
+// import UseStateComplex from './pocs/UseStateComplex';
+// import List from './pocs/List';
+import UseMemo from './pocs/UseMemo';
 function App() {
   return (
     <>
@@ -10,7 +12,9 @@ function App() {
       {/* <UseState></UseState> */}
       {/* <UseStateComplex></UseStateComplex> */}
       {/* <UseReducer></UseReducer> */}
-      <List></List>
+      {/* <List></List> */}
+      {/* <UseMemo></UseMemo> */}
+      <Parent/>
     </>
   );
 }
