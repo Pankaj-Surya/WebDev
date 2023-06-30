@@ -1,6 +1,6 @@
 import React from 'react'
 import '.././Style/Header.css'
-import logo from '.././assets/logo.png'
+import logo from '../assets/loginLogo.png'
 import SearchIcon from '@mui/icons-material/Search';
 import HeaderOption from './HeaderOption';
 import HomeIcon from '@mui/icons-material/Home';

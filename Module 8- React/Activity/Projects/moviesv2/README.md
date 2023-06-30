@@ -1,3 +1,7 @@
+## Docker Deployment
+https://www.youtube.com/watch?v=spA3jJYi6Q4&t=44s
+https://github.com/KubeKode/react-todo-list-app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

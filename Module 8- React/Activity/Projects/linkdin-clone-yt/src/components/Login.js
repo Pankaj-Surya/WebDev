@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ".././Style/Login.css"
-import loginLogo from ".././assets/loginLogo.png"
+import loginLogo from "../assets/loginLogo.png"
 //import auth from "../firebase"
 import {getAuth,createUserWithEmailAndPassword,updateProfile,signInWithEmailAndPassword} from 'firebase/auth'
 import { useDispatch } from 'react-redux'
